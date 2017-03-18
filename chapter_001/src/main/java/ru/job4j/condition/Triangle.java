@@ -38,11 +38,17 @@ public class Triangle {
      * @return result
      */
     public double area() {
-        double ab = lineLength(a, b);
-        double ac = lineLength(a, c);
-        double bc = lineLength(b, c);
-        double p = (ab + ac + bc) / 2;
-        return Math.sqrt(p * (p - ab) * (p - ac) * (p - bc));
+        double result = 0;
+        if (a != null && b != null & c != null) {
+            double ab = lineLength(a, b);
+            double ac = lineLength(a, c);
+            double bc = lineLength(b, c);
+            if (ac > 0 && ab > 0 && bc > 0) {
+                double p = (ab + ac + bc) / 2;
+                result = Math.sqrt(p * (p - ab) * (p - ac) * (p - bc));
+            }
+        }
+        return result;
     }
 
     /**
