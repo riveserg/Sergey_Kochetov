@@ -23,4 +23,14 @@ public class MaxTest {
         int expected = 10;
         assertThat(result, is(expected));
     }
+    /**
+     *  Method test.  third number is greater.
+     */
+    @Test
+    public void whenThirdNumberIsGreaterThenTrue() {
+        Max max = new Max();
+        int result = max.max(10, 5, 15);
+        int expected = 15;
+        assertThat(result, is(expected));
+    }
 }
