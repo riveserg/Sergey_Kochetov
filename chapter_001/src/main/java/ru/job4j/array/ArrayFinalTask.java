@@ -23,7 +23,7 @@ public class ArrayFinalTask {
         boolean flag;
         for (int i = 0; i < originCharArr.length; i++) {
             flag = true;
-            if (originCharArr[i] == subCharArr[0] && (originCharArr.length - i) > subCharArr.length) {
+            if (originCharArr[i] == subCharArr[0] && (originCharArr.length - i) >= subCharArr.length) {
                 for (int j = 1; j < subCharArr.length; j++) {
                     if (!(originCharArr[i + j] == subCharArr[j])) {
                         flag = false;
@@ -36,4 +36,5 @@ public class ArrayFinalTask {
         }
         return result;
     }
+
 }
