@@ -8,6 +8,9 @@ package ru.job4j.profession;
  * @since 0.1
  */
 public class Teacher extends Profession {
+    /**
+     *  Experience teacher.
+     */
     private int experienceTeacher;
     /**
      *  Constructor.
@@ -25,7 +28,7 @@ public class Teacher extends Profession {
      * @param students - array students
      * @return return result string all students
      */
-    public String  teach(String course, Profession[] students){
+    public String  teach(String course, Profession... students) {
         StringBuilder sb = new StringBuilder();
         for (Profession student : students) {
             sb.append(String.format("Професор %s учит %s предмету %s", this.getName(), student.getName(), course));

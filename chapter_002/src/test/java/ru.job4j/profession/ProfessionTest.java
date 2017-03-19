@@ -13,12 +13,25 @@ import static org.junit.Assert.assertThat;
  * @since 0.1
  */
 public class ProfessionTest {
+    /**
+     *  Test say().
+     */
     @Test
-    public void whenThirdNumberIsGreaterThenTrue() {
-        Max max = new Max();
-        int result = max.max(10, 5, 15);
-        int expected = 15;
-        assertThat(result, is(expected));
+    public void whenProfessionSayThenIsResult() {
+        Profession profession = new Profession("name", 20);
+        String result = profession.say();
+        String except = "Я студент";
+        assertThat(result, is(except));
+    }
+    /**
+     *  Test say(text).
+     */
+    @Test
+    public void whenProfessionSayTextThenTextIs() {
+        Profession profession = new Profession("name", 20);
+        String result = profession.say("test");
+        String except = "Say: test";
+        assertThat(result, is(except));
     }
 
 }

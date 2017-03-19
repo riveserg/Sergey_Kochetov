@@ -22,7 +22,7 @@ public class Profession {
      * @param text - tezt
      * @return result
      */
-    public String say(String text){
+    public String say(String text) {
         return String.format("Say: %s", text);
     }
 
@@ -30,7 +30,7 @@ public class Profession {
      *  Human says.
      * @return I am a student
      */
-    public String say(){
+    public String say() {
         return String.format("Я студент");
     }
 
@@ -59,4 +59,6 @@ public class Profession {
     public int getAge() {
         return age;
     }
+
+
 }

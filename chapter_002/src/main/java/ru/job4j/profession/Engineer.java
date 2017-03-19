@@ -28,9 +28,9 @@ public class Engineer extends Profession {
      * @param component - working part
      * @return reports working engineer
      */
-    public String work (String component) {
+    public String work(String component) {
         experienceEngineer++;
-        return System.out.format("Инженер %s строит %s", this.getName(), component).toString();
+        return String.format("Инженер %s строит %s", this.getName(), component);
     }
     /**
      * Engineer says what he does.

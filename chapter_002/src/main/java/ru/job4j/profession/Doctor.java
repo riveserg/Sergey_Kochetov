@@ -8,8 +8,16 @@ package ru.job4j.profession;
  * @since 0.1
  */
 public class Doctor extends Profession {
+    /**
+     * Experience medic.
+     */
     private int experienceMedic;
 
+    /**
+     *  Constructor.
+     * @param name - name
+     * @param age - age
+     */
     public Doctor(String name, int age) {
         super(name, age);
         this.experienceMedic = 0;
@@ -20,13 +28,13 @@ public class Doctor extends Profession {
      * @param pacient - pacient
      * @return result
      */
-    public String heal (Profession pacient) {
+    public String heal(Profession pacient) {
         if (pacient instanceof Doctor) {
             experienceMedic--;
         } else {
             experienceMedic++;
         }
-        return System.out.format("Доктор %s лечит %s", this.getName(), pacient.getName()).toString();
+        return String.format("Doctor %s heal %s", this.getName(), pacient.getName());
     }
     /**
      *   Doctor says what he does.
