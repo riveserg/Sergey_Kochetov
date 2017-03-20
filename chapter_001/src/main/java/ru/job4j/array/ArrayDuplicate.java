@@ -11,7 +11,7 @@ import java.util.Arrays;
  */
 class ArrayDuplicate {
     /**
-     *  Method sorting array of strings.
+     *  Method sorting array of strings!.
      * @param array - array
      * @return result array
      */
