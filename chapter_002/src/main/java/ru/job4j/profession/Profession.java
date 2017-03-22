@@ -16,6 +16,10 @@ public class Profession {
      *  Age.
      */
     private int age;
+    /**
+     *  Universal experience.
+     */
+    private int experience;
 
     /**
      * Human says text.
@@ -42,6 +46,7 @@ public class Profession {
     public Profession(String name, int age) {
         this.name = name;
         this.age = age;
+        this.experience = 0;
     }
 
     /**
@@ -60,5 +65,19 @@ public class Profession {
         return age;
     }
 
+    /**
+     * Getter experience.
+     * @return experience
+     */
+    public int getExperience() {
+        return experience;
+    }
 
+    /**
+     * Setter experience.
+     * @param experience - experience
+     */
+    public void setExperience(int experience) {
+        this.experience = experience;
+    }
 }

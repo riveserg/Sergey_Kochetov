@@ -8,10 +8,7 @@ package ru.job4j.profession;
  * @since 0.1
  */
 public class Teacher extends Profession {
-    /**
-     *  Experience teacher.
-     */
-    private int experienceTeacher;
+
     /**
      *  Constructor.
      * @param name - name teacher
@@ -19,7 +16,7 @@ public class Teacher extends Profession {
      */
     public Teacher(String name, int age) {
         super(name, age);
-        this.experienceTeacher = 10;
+        this.setExperience(getExperience() + 10);
     }
 
     /**
@@ -33,7 +30,7 @@ public class Teacher extends Profession {
         for (Profession student : students) {
             sb.append(String.format("Професор %s учит %s предмету %s", this.getName(), student.getName(), course));
             sb.append(System.getProperty("line.separator"));
-            experienceTeacher++;
+            this.setExperience(getExperience() + 1);
         }
         return sb.toString();
     }
@@ -46,11 +43,6 @@ public class Teacher extends Profession {
     public String say() {
         return String.format("Я учитель %s", this.getName());
     }
-    /**
-     *  Getter experience teacher.
-     * @return experience
-     */
-    public int getExperienceTeacher() {
-        return experienceTeacher;
-    }
+
+
 }

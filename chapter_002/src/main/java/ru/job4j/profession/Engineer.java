@@ -8,10 +8,6 @@ package ru.job4j.profession;
  * @since 0.1
  */
 public class Engineer extends Profession {
-    /**
-     * Experience Engineer.
-     */
-    private int experienceEngineer;
 
     /**
      *  Constructor.
@@ -20,7 +16,7 @@ public class Engineer extends Profession {
      */
     public Engineer(String name, int age) {
         super(name, age);
-        this.experienceEngineer = this.getAge() < 30 ? 0 : 10;
+        this.setExperience(age < 30 ? 0 : 10);
     }
 
     /**
@@ -29,7 +25,7 @@ public class Engineer extends Profession {
      * @return reports working engineer
      */
     public String work(String component) {
-        experienceEngineer++;
+        this.setExperience(this.getExperience() + 1);
         return String.format("Инженер %s строит %s", this.getName(), component);
     }
     /**
@@ -40,11 +36,5 @@ public class Engineer extends Profession {
     public String say() {
         return String.format("Я инженер %s", this.getName());
     }
-    /**
-     *  Getter experience engineer.
-     * @return experience
-     */
-    public int getExperienceEngineer() {
-        return experienceEngineer;
-    }
+
 }

@@ -19,8 +19,8 @@ public class ProfessionTest {
     @Test
     public void whenProfessionSayThenIsResult() {
         Profession profession = new Profession("name", 20);
-        String result = profession.say();
-        String except = "Я студент";
+        final String result = profession.say();
+        final String except = "Я студент";
         assertThat(result, is(except));
     }
     /**
@@ -29,8 +29,8 @@ public class ProfessionTest {
     @Test
     public void whenProfessionSayTextThenTextIs() {
         Profession profession = new Profession("name", 20);
-        String result = profession.say("test");
-        String except = "Say: test";
+        final String result = profession.say("test");
+        final String except = "Say: test";
         assertThat(result, is(except));
     }
 

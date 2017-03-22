@@ -19,39 +19,41 @@ public class DoctorTest {
     @Test
     public void whenDoctorSayThenIsResult() {
         Profession doctor = new Doctor("name", 20);
-        String result = doctor.say();
-        String except = "Я доктор name";
+        final String result = doctor.say();
+        final String except = "Я доктор name";
         assertThat(result, is(except));
     }
     /**
      *  Test heal noname().
      */
     @Test
-    public void whenDoctorHealNonameThenIsResult() {
+    public void whenDoctorHealNonameThenIsResultTag() {
         Doctor doctor = new Doctor("name", 20);
-        Profession pacient = new Profession("noname", 22);
-        String result = doctor.heal(pacient);
-        int resultExperienceMedic = 1;
-        int exceptExperienceMedic = doctor.getExperienceMedic();
-        String except = String.format("Doctor %s heal %s", "name", "noname");
-        assertThat(resultExperienceMedic, is(exceptExperienceMedic));
+        final String result = doctor.heal(new Profession("noname", 22));
+        final String except = String.format("Doctor %s heal %s", "name", "noname");
         assertThat(result, is(except));
     }
     /**
-     *  Test heal doctor().
+     *  Test heal noname().
      */
     @Test
-    public void whenDoctorHealDoctorThenIsResult() {
-        Doctor doctor = new Doctor("doctor", 20);
-        Doctor pacient = new Doctor("doctorPacient", 22);
-        String result = doctor.heal(pacient);
-        String except = String.format("Doctor %s heal %s", "doctor", "doctorPacient");
-        int resultExperienceMedic = -1;
-        int exceptExperienceMedic = doctor.getExperienceMedic();
-
+    public void whenDoctorHealNonameThenGainExperience() {
+        Doctor doctor = new Doctor("name", 20);
+        final String result = doctor.heal(new Profession("noname", 22));
+        final int resultExperienceMedic = 1;
+        final int exceptExperienceMedic = doctor.getExperience();
         assertThat(resultExperienceMedic, is(exceptExperienceMedic));
-
     }
 
-
+    /**
+     *  Test heal doctor treats the doctor.
+     */
+    @Test
+    public void whenDoctorHealDoctorThenReductionExperience() {
+        Doctor doctor = new Doctor("doctor", 20);
+        final String result = doctor.heal(new Doctor("doctorPacient", 22));
+        final int resultExperienceMedic = -1;
+        final int exceptExperienceMedic = doctor.getExperience();
+        assertThat(resultExperienceMedic, is(exceptExperienceMedic));
+    }
 }
