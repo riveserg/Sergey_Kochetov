@@ -18,9 +18,8 @@ public class TrackerTest {
     @Test
     public void whenAddNewItemThenTrackerHasSameItem() {
         Tracker tracker = new Tracker();
-        Item item = tracker.add(new Item("name1", "text1", "312"));
-
-        String except = "Item{name='name1" + '\'' + ", desc='text1" + '\'' + ", id='312" + '\'' + '}';
+        Item item = tracker.add(new Item("name1", "text1"));
+        final String except = String.format("Item{name='%s', desc='%s'}", "name1", "text1");
         assertThat(tracker.getAll()[0].toString(), is(except));
     }
 
@@ -30,11 +29,12 @@ public class TrackerTest {
     @Test
     public void whenUpdateItemThenTrackerHasUpdateItem() {
         Tracker tracker = new Tracker();
-        Item item = tracker.add(new Item("name33", "text122", "312"));
-        Item itemUpd = new Item("name1", "text1", "312");
-        tracker.update(itemUpd);
+        Item item = tracker.add(new Item("name22", "text122"));
+        item.setName("name1");
+        item.setDesc("text1");
+        tracker.update(item);
 
-        String except = "Item{name='name1" + '\'' + ", desc='text1" + '\'' + ", id='312" + '\'' + '}';
+        final String except = String.format("Item{name='%s', desc='%s'}", "name1", "text1");
         assertThat(tracker.getAll()[0].toString(), is(except));
     }
 
@@ -44,12 +44,12 @@ public class TrackerTest {
     @Test
     public void whenDeleteItemThenTrackerHasDeleteItem() {
         Tracker tracker = new Tracker();
-        Item item1 = tracker.add(new Item("name33", "text122", "1"));
-        Item item2 = tracker.add(new Item("name33", "text122", "2"));
-        Item item3 = tracker.add(new Item("name33", "text122", "3"));
-        tracker.delete(new Item("name33", "text122", "3"));
-        int result =  tracker.getAll().length;
-        int except = 2;
+        Item item1 = tracker.add(new Item("name33", "text122"));
+        Item item2 = tracker.add(new Item("name33", "text122"));
+        Item item3 = tracker.add(new Item("name33", "text122"));
+        tracker.delete(item2);
+        final int result =  tracker.findAll().length;
+        final int except = 2;
         assertThat(result, is(except));
     }
 
@@ -60,7 +60,7 @@ public class TrackerTest {
     public void whenDeleteAllNullItemThenTrackerHasDeleteAllNullItem() {
         Tracker tracker = new Tracker();
         Item item1 = tracker.add(null);
-        Item item2 = tracker.add(new Item("name33", "text122", "2"));
+        Item item2 = tracker.add(new Item("name33", "text122"));
         Item item3 = tracker.add(null);
         int result =  tracker.findAll().length;
         int except = 1;
@@ -72,10 +72,10 @@ public class TrackerTest {
     @Test
     public void whenFindAllItemByNameThenTrackerHasFindAllItem() {
         Tracker tracker = new Tracker();
-        Item item1 = tracker.add(new Item("name1", "text123", "1"));
-        Item item2 = tracker.add(new Item("name1", "text122", "2"));
-        Item item3 = tracker.add(new Item("name1", "text122", "3"));
-        Item item4 = tracker.add(new Item("name2", "text124", "4"));
+        Item item1 = tracker.add(new Item("name1", "text123"));
+        Item item2 = tracker.add(new Item("name1", "text122"));
+        Item item3 = tracker.add(new Item("name1", "text122"));
+        Item item4 = tracker.add(new Item("name2", "text124"));
         int result =  tracker.findByName("name1").length;
         int except = 3;
         assertThat(result, is(except));
@@ -86,10 +86,11 @@ public class TrackerTest {
     @Test
     public void whenFindItemByIdThenTrackerHasFindItem() {
         Tracker tracker = new Tracker();
-        Item item1 = tracker.add(new Item("name1", "text123", "111"));
-        Item item2 = tracker.add(new Item("name1", "text122", "2"));
-        String result =  tracker.findById("111").getId();
-        String  except = "111";
+        Item item1 = tracker.add(new Item("name1", "text123"));
+        Item item2 = tracker.add(new Item("name1", "text122"));
+        String id = item1.getId();
+        String result =  tracker.findById(id).getId();
+        String  except = id;
         assertThat(result, is(except));
     }
 }

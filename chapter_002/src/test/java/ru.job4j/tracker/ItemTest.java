@@ -17,9 +17,9 @@ public class ItemTest {
      */
     @Test
     public void whenCreateItemThenToString() {
-        Item item = new Item("name1", "text1", "312");
+        Item item = new Item("name1", "text1");
         String result = item.toString();
-        String except = "Item{name='name1" + '\'' + ", desc='text1" + '\'' + ", id='312" + '\'' + '}';
+        String except = String.format("Item{name='%s', desc='%s'}", "name1", "text1");
         assertThat(result, is(except));
     }
     /**
@@ -29,7 +29,7 @@ public class ItemTest {
     public void whenCreateNullItemThenToString() {
         Item item = new Item();
         String result = item.toString();
-        String except = "null";
+        String except = String.format("Item{'%s'}", "null");
         assertThat(result, is(except));
     }
 

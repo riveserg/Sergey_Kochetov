@@ -12,6 +12,14 @@ public class Tracker {
      *  items.
      */
     private Item[] items;
+    /**
+     * Position array items.
+     */
+    private int position = -1;
+    /**
+     *  Default array ?.
+     */
+    private static final int ARRAY_LENGTH = 16;
 
     /**
      *  Getter items.
@@ -29,16 +37,19 @@ public class Tracker {
      */
     public Item add(Item item) {
         if (items == null) {
-            this.items = new Item[1];
-            this.items[0] = item;
-        } else {
-            Item[] tmpItem = new Item[this.items.length + 1];
+            this.items = new Item[ARRAY_LENGTH];
+
+        } else if (this.items.length == position + 1) {
+            Item[] newItems = new Item[this.items.length + ARRAY_LENGTH];
             for (int i = 0; i < this.items.length; i++) {
-                tmpItem[i] = this.items[i];
+                newItems[i] = this.items[i];
             }
-            tmpItem[tmpItem.length - 1] = item;
-            this.items = tmpItem;
+            //System.arraycopy(newItems, 0, items, 0, position);
+            this.items = newItems;
+            System.out.println(this.items.length);
+
         }
+            this.items[++position] = item;
         return item;
     }
 
@@ -48,7 +59,7 @@ public class Tracker {
      */
     public void update(Item item) {
         for (Item itemUpd : this.items) {
-            if (itemUpd.getId().equals(item.getId())) {
+            if (itemUpd != null && itemUpd.getId().equals(item.getId())) {
                 itemUpd.setName(item.getName());
                 itemUpd.setDesc(item.getDesc());
                 break;
@@ -61,17 +72,15 @@ public class Tracker {
      * @param item - item
      */
     public void delete(Item item) {
-        Item[] newItems;
         for (int i = 0; i < this.items.length; i++) {
-            if (this.items[i].getId().equals(item.getId())) {
+            if (this.items[i] != null && this.items[i].getId().equals(item.getId())) {
                 if (i != this.items.length - 1) {
-                    for (int j = i; j < this.items.length - 1; j++) {
+                    for (int j = i; j != this.items.length - 1; j++) {
                         this.items[j] = this.items[j + 1];
                     }
+                } else {
+                    this.items[position--] = null;
                 }
-                newItems = new Item[this.items.length - 1];
-                System.arraycopy(this.items, 0, newItems, 0, this.items.length - 1);
-                this.items = newItems;
                 break;
             }
         }
@@ -82,18 +91,22 @@ public class Tracker {
      * @return new array item
      */
     public Item[] findAll() {
-        Item[] tmpItem = new Item[this.items.length];
-        Item[] result = this.items;
+        Item[] result;
         int countNull = 0;
-        for (Item itm : this.items) {
-            if (itm != null) {
-                tmpItem[countNull++] = itm;
+        for (int i = 0; i < this.items.length; i++) {
+            if (this.items[i] == null) {
+                countNull++;
             }
         }
-        if (countNull != this.items.length) {
-            result = new Item[countNull];
-            System.arraycopy(tmpItem, 0, result, 0, countNull);
-            this.items = result;
+        if (this.items.length - countNull > 0) {
+            result = new Item[this.items.length - countNull];
+            for (int i = 0; i != items.length - countNull; i++) {
+                if (this.items[i] != null) {
+                    result[i] = this.items[i];
+                }
+            }
+        } else {
+            result = this.items;
         }
         return result;
     }
@@ -107,7 +120,7 @@ public class Tracker {
         Item[] result = null;
         int countFindName = 0;
         for (Item findItem : this.items) {
-            if (findItem.getName().equals(key)) {
+            if (findItem != null && findItem.getName().equals(key)) {
                 countFindName++;
             }
         }
@@ -115,7 +128,7 @@ public class Tracker {
             result = new Item[countFindName];
             int tmpCount = 0;
             for (Item findItem : this.items) {
-                if (findItem.getName().equals(key)) {
+                if (findItem != null && findItem.getName().equals(key)) {
                     result[tmpCount++] = findItem;
                 }
             }
@@ -131,11 +144,38 @@ public class Tracker {
     public Item findById(String id) {
         Item result = null;
         for (Item findItem : this.items) {
-            if (findItem.getId().equals(id)) {
+            if (findItem != null && findItem.getId().equals(id)) {
                result = findItem;
                break;
             }
         }
         return result;
     }
+    /*
+    public static void main(String[] args) {
+        Tracker  tr = new Tracker();
+        tr.add(new Item("name1", "desc1"));
+        tr.add(new Item("name2", "desc2"));
+        tr.add(new Item("name3", "desc3"));
+        tr.add(new Item("name4", "desc4"));
+        tr.add(new Item("name5", "desc5"));
+        tr.add(new Item("name6", "desc6"));
+        tr.add(new Item("name7", "desc7"));
+        tr.add(new Item("name8", "desc8"));
+        tr.add(new Item("name1", "desc1"));
+        tr.add(new Item("name2", "desc2"));
+        tr.add(new Item("name3", "desc3"));
+        tr.add(new Item("name4", "desc4"));
+        tr.add(new Item("name5", "desc5"));
+        tr.add(new Item("name6", "desc6"));
+        tr.add(new Item("name7", "desc7"));
+        tr.add(new Item("name8", "desc8"));
+
+
+
+        for (Item item : tr.findAll()) {
+            System.out.println(item.toString());
+        }
+
+    }*/
 }

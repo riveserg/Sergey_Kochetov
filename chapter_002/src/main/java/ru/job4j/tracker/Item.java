@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.Random;
+
 /**
  * Item.
  *
@@ -21,16 +23,16 @@ public class Item {
      */
     private String id;
 
+
     /**
      *  Constructor Item.
      * @param name - name
      * @param desc - description
-     * @param id - id
      */
-    public Item(String name, String desc, String id) {
+    public Item(String name, String desc) {
         this.name = name;
         this.desc = desc;
-        this.id = id;
+        this.id = String.valueOf(System.currentTimeMillis() + new Random().nextInt());
     }
 
     /**
@@ -85,9 +87,9 @@ public class Item {
     public String toString() {
         String result;
         if (this.name == null & this.id == null & this.desc == null) {
-            result = "null";
+            result = String.format("Item{'%s'}", "null");
         } else {
-            result = "Item{" + "name='" + name + '\'' + ", desc='" + desc + '\'' + ", id='" + id + '\'' + '}';
+            result = String.format("Item{name='%s', desc='%s'}", this.name, this.desc);
         }
         return result;
     }
