@@ -60,8 +60,7 @@ public class TrackerTest {
     public void whenDeleteAllNullItemThenTrackerHasDeleteAllNullItem() {
         Tracker tracker = new Tracker();
         Item item2 = tracker.add(new Item("name33", "text122"));
-        Item item1 = tracker.add(null);
-        Item item3 = tracker.add(null);
+
         int result =  tracker.findAll().length;
         int except = 1;
         assertThat(result, is(except));
