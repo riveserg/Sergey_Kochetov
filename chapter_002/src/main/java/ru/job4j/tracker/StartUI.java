@@ -15,7 +15,6 @@ public class StartUI {
      * Tracker.
      */
     private Tracker tracker = new Tracker();
-
     /**
      *  Constructor StartUI.
      * @param input - input
@@ -26,7 +25,7 @@ public class StartUI {
 
     /** Print.
      *  print the user menu Tracker
-     * @param data
+     * @param data - data
      */
     public void print(String data) {
         if (data.equals("Print menu")) {
@@ -87,10 +86,9 @@ public class StartUI {
                         break;
                     case "6":
                         isWork = false;
+                    default:
                 }
             }
-
-
     }
 
     /**
@@ -102,34 +100,6 @@ public class StartUI {
         Input input = new ConsoleInput();
         new StartUI(input).init();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

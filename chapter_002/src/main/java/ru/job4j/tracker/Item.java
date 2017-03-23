@@ -40,15 +40,27 @@ public class Item {
     public Item(String name, String desc) {
         this.name = name;
         this.desc = desc;
-        this.id = String.valueOf((int)(new Random().nextDouble() * 10000));
+        this.id = String.valueOf((int) (new Random().nextDouble() * 10000));
         this.created = System.currentTimeMillis();
     }
+
+    /**
+     * Constructor Item.
+     * @param id - id
+     */
     public Item(String id) {
         this.name = "null";
         this.desc = "null";
         this.id = id;
         this.created = System.currentTimeMillis();
     }
+
+    /**
+     * Constructor Item.
+     * @param name - name
+     * @param desc - description
+     * @param id - id
+     */
     public Item(String name, String desc, String id) {
         this.name = name;
         this.desc = desc;
