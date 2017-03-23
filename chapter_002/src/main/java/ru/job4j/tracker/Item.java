@@ -22,6 +22,14 @@ public class Item {
      * ID.
      */
     private String id;
+    /**
+     *  Date of create.
+     */
+    private long created;
+    /**
+     * Comments.
+     */
+    private String[] commentes;
 
 
     /**
@@ -32,7 +40,20 @@ public class Item {
     public Item(String name, String desc) {
         this.name = name;
         this.desc = desc;
-        this.id = String.valueOf(System.currentTimeMillis() + new Random().nextInt());
+        this.id = String.valueOf((int)(new Random().nextDouble() * 10000));
+        this.created = System.currentTimeMillis();
+    }
+    public Item(String id) {
+        this.name = "null";
+        this.desc = "null";
+        this.id = id;
+        this.created = System.currentTimeMillis();
+    }
+    public Item(String name, String desc, String id) {
+        this.name = name;
+        this.desc = desc;
+        this.id = id;
+        this.created = System.currentTimeMillis();
     }
 
     /**

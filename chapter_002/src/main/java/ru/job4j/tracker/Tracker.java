@@ -60,10 +60,10 @@ public class Tracker {
      * @param item - item
      */
     public void update(Item item) {
-        for (Item itemUpd : this.items) {
-            if (itemUpd != null && itemUpd.getId().equals(item.getId())) {
-                itemUpd.setName(item.getName());
-                itemUpd.setDesc(item.getDesc());
+        for (int i = 0; i < position; i++) {
+            if (this.items[i].getId().equals(item.getId())) {
+                this.items[i].setName(item.getName());
+                this.items[i].setDesc(item.getDesc());
                 break;
             }
         }
@@ -74,8 +74,8 @@ public class Tracker {
      * @param item - item
      */
     public void delete(Item item) {
-        for (int i = 0; i < this.items.length; i++) {
-            if (this.items[i] != null && this.items[i].getId().equals(item.getId())) {
+        for (int i = 0; i < position; i++) {
+            if (item != null && this.items[i].getId().equals(item.getId())) {
                 if (i != this.items.length - 1) {
                     //this.items[i] = null;
                     System.arraycopy(this.items, i + 1, this.items, i, this.items.length - i - 1);
@@ -103,15 +103,14 @@ public class Tracker {
      */
     public Item[] findByName(String key) {
         Item[] tmp = new Item[position + 1];
-        int countFindName = -1;
-        for (Item findItem : this.items) {
-            if (findItem != null && findItem.getName().equals(key)) {
-
-                tmp[++countFindName] = findItem;
+        int countFindName = 0;
+        for (int i = 0; i <position; i++) {
+            if (this.items[i].getName().equals(key)) {
+                tmp[countFindName++] = this.items[i];
             }
         }
-        Item[] result = new Item[countFindName + 1];
-        System.arraycopy(tmp, 0, result, 0, countFindName + 1);
+        Item[] result = new Item[countFindName];
+        System.arraycopy(tmp, 0, result, 0, countFindName);
         return result;
     }
 
@@ -122,9 +121,9 @@ public class Tracker {
      */
     public Item findById(String id) {
         Item result = null;
-        for (Item findItem : this.items) {
-            if (findItem != null && findItem.getId().equals(id)) {
-               result = findItem;
+        for (int i = 0; i <position; i++) {
+            if (id != null && this.items[i].getId().equals(id)) {
+               result = this.items[i];
                break;
             }
         }

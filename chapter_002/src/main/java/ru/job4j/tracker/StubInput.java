@@ -35,12 +35,5 @@ public class StubInput implements Input {
         return answers[position++];
     }
 
-    /**
-     * Print.
-     * @param data - data
-     */
-    @Override
-    public void print(String data) {
 
-    }
 }

@@ -15,10 +15,4 @@ public interface Input {
      */
     String ask(String question);
 
-    /**
-     *  Print.
-     * @param data - data
-     */
-    void print(String data);
-
 }

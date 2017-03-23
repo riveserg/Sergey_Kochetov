@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.io.Closeable;
+import java.io.IOException;
 import java.util.Scanner;
 /**
  * ConsoleInput.
@@ -8,7 +10,7 @@ import java.util.Scanner;
  * @version $Id$
  * @since 0.1
  */
-public class ConsoleInput implements Input {
+public class ConsoleInput implements Input, Closeable {
     /**
      * Scanner to read lines of user input.
      */
@@ -25,24 +27,11 @@ public class ConsoleInput implements Input {
         return scanner.nextLine();
     }
 
-    /** Print.
-     *  print the user menu Tracker
-     * @param data
-     */
+
+
+
     @Override
-    public void print(String data) {
-        /*
-        if (data.equals("Print menu")) {
-            String[] textMenu = {"0. Add new Item", "1. Show all items",
-                    "2. Edit item", "3. Delete item", "4. Find item by Id",
-                    "5. Find items by name", "5. Find items by name", "6. Exit Program", "Select: "};
-            for (String text : textMenu) {
-                System.out.println(text);
-
-            }
-        }
-        */
+    public void close() throws IOException {
+        scanner.close();
     }
-
-
 }
