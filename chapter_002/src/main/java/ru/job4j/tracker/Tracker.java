@@ -113,22 +113,16 @@ public class Tracker {
      * @return result
      */
     public Item[] findByName(String key) {
-        Item[] result = null;
-        int countFindName = 0;
+        Item[] tmp = new Item[position];
+        int countFindName = -1;
         for (Item findItem : this.items) {
             if (findItem != null && findItem.getName().equals(key)) {
-                countFindName++;
+
+                tmp[++countFindName] = findItem;
             }
         }
-        if (countFindName > 0) {
-            result = new Item[countFindName];
-            int tmpCount = 0;
-            for (Item findItem : this.items) {
-                if (findItem != null && findItem.getName().equals(key)) {
-                    result[tmpCount++] = findItem;
-                }
-            }
-        }
+        Item[] result = new Item[countFindName + 1];
+        System.arraycopy(tmp, 0, result, 0, countFindName + 1);
         return result;
     }
 
@@ -147,5 +141,4 @@ public class Tracker {
         }
         return result;
     }
-
 }
