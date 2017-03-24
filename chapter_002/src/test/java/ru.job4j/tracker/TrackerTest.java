@@ -48,9 +48,9 @@ public class TrackerTest {
         Item item2 = tracker.add(new Item("name33", "text122"));
         Item item3 = tracker.add(new Item("name33", "text122"));
         tracker.delete(item2);
-        final int result =  tracker.findAll().length;
-        final int except = 2;
-        assertThat(result, is(except));
+        Item[] result = tracker.findAll();
+        Item[] expect = {item1, item3};
+        assertThat(result, is(expect));
     }
 
     /**
@@ -60,10 +60,9 @@ public class TrackerTest {
     public void whenDeleteAllNullItemThenTrackerHasDeleteAllNullItem() {
         Tracker tracker = new Tracker();
         Item item2 = tracker.add(new Item("name33", "text122"));
-
-        int result =  tracker.findAll().length;
-        int except = 1;
-        assertThat(result, is(except));
+        Item[] result = tracker.findAll();
+        Item[] expect = {item2};
+        assertThat(result, is(expect));
     }
     /**
      * Test return all items find by name.
@@ -75,9 +74,9 @@ public class TrackerTest {
         Item item2 = tracker.add(new Item("name1", "text122"));
         Item item3 = tracker.add(new Item("name1", "text122"));
         Item item4 = tracker.add(new Item("name2", "text124"));
-        int result =  tracker.findByName("name1").length;
-        int except = 3;
-        assertThat(result, is(except));
+        Item[] result = tracker.findByName("name1");
+        Item[] expect = {item1, item2, item3};
+        assertThat(result, is(expect));
     }
     /**
      * Test return items find by ID.

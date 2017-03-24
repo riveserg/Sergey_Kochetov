@@ -126,4 +126,41 @@ public class Item {
         }
         return result;
     }
+
+    /**
+     *  Equals.
+     * @param o - item.
+     * @return result
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Item item = (Item) o;
+
+        if (!name.equals(item.name)) {
+            return false;
+        }
+        if (!desc.equals(item.desc)) {
+            return false;
+        }
+        return id.equals(item.id);
+    }
+
+    /**
+     * HashCode.
+     * @return result
+     */
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + desc.hashCode();
+        result = 31 * result + id.hashCode();
+        return result;
+    }
 }
