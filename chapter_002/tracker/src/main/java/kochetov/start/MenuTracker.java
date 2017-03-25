@@ -47,16 +47,15 @@ public class MenuTracker {
      * Fill action.
      */
     public void fillAction() {
-        System.out.println("-------------------------");
-        System.out.println("-----------MENU----------");
-        System.out.println("-------------------------");
-        this.actions[position++] = new AddItem();
-        this.actions[position++] = new ShowItem();
-        this.actions[position++] = new EditItem();
-        this.actions[position++] = new DelItem();
-        this.actions[position++] = new FindItemById();
-        this.actions[position++] = new FindItemByName();
-        this.actions[position++] = new ExitProgram();
+
+        addAction(new AddItem());
+        addAction(new ShowItem());
+        addAction(new EditItem());
+        addAction(new DelItem());
+        addAction(new FindItemById());
+        addAction(new FindItemByName());
+        addAction(new ExitProgram());
+
     }
 
     /**
@@ -132,13 +131,11 @@ public class MenuTracker {
          */
         @Override
         public void execute(Input input, Tracker tracker) {
-            System.out.println("-------------------------");
-            System.out.println("--------PRINT ITEM-------");
-            System.out.println("-------------------------");
+
             for (Item item : tracker.findAll()) {
                 System.out.println(String.format("id: %s name: %s desc: %s", item.getId(), item.getName(), item.getDesc()));
             }
-            System.out.println("-------------------------");
+
         }
 
         /**

@@ -10,7 +10,7 @@ public class StartUI{
     /**
      * Ranges.
      */
-    private int[] ranges = new int[] {0, 1, 2, 3, 4, 5, 6};
+    //private int[] ranges = new int[] {0, 1, 2, 3, 4, 5, 6};
     /**
      * Input.
      */
@@ -18,38 +18,23 @@ public class StartUI{
     /**
      * Tracker.
      */
-    private Tracker tracker = new Tracker();
+    private Tracker tracker;
     /**
      *  Constructor StartUI.
      * @param input - input
+     * @param tracker - tracker
      */
-    public StartUI(Input input) {
+    public StartUI(Input input, Tracker tracker) {
         this.input = input;
+        this.tracker = tracker;
     }
 
     /**
      * Method init.
      */
     public void init() {
-        Tracker tracker = new Tracker();
-        MenuTracker menu = new MenuTracker(this.input, tracker);
+        MenuTracker menu = new MenuTracker(this.input, this.tracker);
         menu.fillAction();
-        UserAction deleteAction = new UserAction() {
-            @Override
-            public int key() {
-                return 3;
-            }
-            @Override
-            public void execute(Input input, Tracker tracker) {
-
-            }
-
-            @Override
-            public String info() {
-                return "Delete ";
-            }
-        };
-        menu.addAction(deleteAction);
         do {
             menu.show();
             int key = Integer.valueOf(input.ask("Select: "));
@@ -61,9 +46,9 @@ public class StartUI{
      * @param args - default
      */
     public static void main(String[] args) {
-        //Input input = new StubInput(new String[] {"create stub task"});
         Input input = new ConsoleInput();
-        new StartUI(input).init();
+        Tracker tracker = new Tracker();
+        new StartUI(input, tracker).init();
     }
 
 
