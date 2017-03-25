@@ -8,10 +8,6 @@ package kochetov.start;
  */
 public class StartUI{
     /**
-     * Ranges.
-     */
-    //private int[] ranges = new int[] {0, 1, 2, 3, 4, 5, 6};
-    /**
      * Input.
      */
     private Input input;
@@ -34,18 +30,26 @@ public class StartUI{
      */
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
+        boolean isExit = true;
         menu.fillAction();
         do {
-            menu.show();
+            if (!(this.input instanceof StubInput)) {
+                menu.show();
+            }
             int key = Integer.valueOf(input.ask("Select: "));
-            menu.select(key);
-        } while (true);
+            if (key != 6) {
+                menu.select(key);
+            } else {
+                isExit = false;
+            }
+        } while (isExit);
     }
     /**
      * Main.
      * @param args - default
      */
     public static void main(String[] args) {
+        //Input input = new StubInput();
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
         new StartUI(input, tracker).init();

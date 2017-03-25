@@ -14,13 +14,46 @@ import static org.junit.Assert.assertThat;
 public class StartUITest {
     /**
      * Test.
-      *
+     */
     @Test
-    public void whenUserAddNewItemThenResultAddedItemInTracker() {
+    public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
         Tracker tracker = new Tracker();
-        Input input = new StubInput(new String[]{"0", "name1", "desc1", "y"});
+        Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});
         new StartUI(input, tracker).init();
-        assertThat(tracker.getAll()[0].getName(), is ("name1"));
-        assertThat(tracker.getAll()[0].getDesc(), is ("desc1"));
-    }*/
+        assertThat(tracker.getAll()[0].getName(), is("test name"));
+    }
+
+    /**
+     * Test.
+     */
+    @Test
+    public void whenUserAddItemThenTrackerHasNewItemWithSameDesc() {
+        Tracker tracker = new Tracker();
+        Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});
+        new StartUI(input, tracker).init();
+        assertThat(tracker.getAll()[0].getDesc(), is("desc"));
+    }
+
+    /**
+     * Test
+     */
+    @Test
+    public void whenUserAddTwoItemThenTrackerHasNewTwoItemWithPrint() {
+        Tracker tracker = new Tracker();
+        Input input = new StubInput(new String[]{"0", "aaa", "bbb", "0", "zzz", "xxx", "6"});
+        new StartUI(input, tracker).init();
+        final int  expect = 2;
+        assertThat(tracker.findAll().length, is(expect));
+    }
+    /**
+     * Test
+     */
+    @Test
+    public void whenUserAddItemAndUpdateThenTrackerHasNewUpdate() {
+        Tracker tracker = new Tracker();
+        Input input = new StubInput(new String[]{"0", "aaa", "bbb", "0", "zzz", "xxx", "6"});
+        new StartUI(input, tracker).init();
+        final int  expect = 2;
+        assertThat(tracker.findAll().length, is(expect));
+    }
 }
