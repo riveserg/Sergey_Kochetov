@@ -1,8 +1,4 @@
 /**
- * start.
- *
- * @author Kochetov
- * @version $Id$
- * @since 0.1
+ * Created by Сергей on 25.03.2017.
  */
-package ru.job4j.start;
+package kochetov.start;

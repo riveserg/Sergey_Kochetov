@@ -1,4 +1,4 @@
-package ru.job4j.tracker;
+package kochetov.start;
 /**
  * StartUI.
  *
@@ -6,7 +6,7 @@ package ru.job4j.tracker;
  * @version $Id$
  * @since 0.1
  */
-public class StartUI {
+public class StartUI{
     /**
      * Ranges.
      */

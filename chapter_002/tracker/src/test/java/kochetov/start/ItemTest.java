@@ -1,4 +1,4 @@
-package ru.job4j.tracker;
+package kochetov.start;
 
 import org.junit.Test;
 
