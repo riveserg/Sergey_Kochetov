@@ -49,8 +49,7 @@ public class StartUI{
      * @param args - default
      */
     public static void main(String[] args) {
-        //Input input = new StubInput();
-        Input input = new ConsoleInput();
+        Input input = new ValidateInput();
         Tracker tracker = new Tracker();
         new StartUI(input, tracker).init();
     }
