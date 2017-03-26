@@ -60,7 +60,9 @@ public class Board {
                positionSource = i;
                 }
         }
-        System.out.println(positionSource);
+        if (positionSource == -1) {
+            throw  new FigureNotFoundException("Figure not found");
+        }
         if (moveFigure != null) {
             for (Cell cell : moveFigure) {
                 for (Figure figure : this.figures) {
@@ -69,23 +71,9 @@ public class Board {
                     }
                 }
             }
-        } else {
-            throw  new FigureNotFoundException("Figure not found");
         }
-
         this.figures[positionSource] = this.figures[positionSource].clone(dist);
         return true;
     }
 
-
-    public static void main(String[] args) {
-
-        Bishop bishop = new Bishop(new Cell(1,1, true));
-        Bishop bishop2 = new Bishop(new Cell(6,6, true));
-
-        Board board = new Board(new Figure[]{bishop, bishop2});
-        boolean fig = board.move(new Cell(1,1, true), new Cell(5, 5));
-        System.out.println(board.getFigures()[0].getPosition().getX()+" "+board.getFigures()[0].getPosition().getY());
-
-    }
 }
