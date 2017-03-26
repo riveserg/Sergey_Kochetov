@@ -2,9 +2,12 @@ package kochetov.figures;
 
 import kochetov.Cell;
 import kochetov.ImpossibleMoveException;
-
 /**
- * Created by Сергей on 26.03.2017.
+ * Knight.
+ *
+ * @author Kochetov
+ * @version $Id$
+ * @since 0.1
  */
 public class Knight extends Figure {
     /**
@@ -36,7 +39,11 @@ public class Knight extends Figure {
         }
         return result;
     }
-
+    /**
+     *  Clone.
+     * @param dist - position figure
+     * @return clone figure
+     */
     @Override
     public Figure clone(Cell dist) {
         return new Knight(dist);

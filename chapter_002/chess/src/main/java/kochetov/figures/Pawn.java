@@ -1,9 +1,12 @@
 package kochetov.figures;
 
 import kochetov.Cell;
-
 /**
- * Created by Сергей on 26.03.2017.
+ * Pawn.
+ *
+ * @author Kochetov
+ * @version $Id$
+ * @since 0.1
  */
 public class Pawn extends Figure {
     /**
@@ -15,7 +18,11 @@ public class Pawn extends Figure {
         super(position);
         this.name = "Pawn";
     }
-
+    /**
+     *  Clone.
+     * @param dist - position figure
+     * @return clone figure
+     */
     @Override
     public Figure clone(Cell dist) {
         return new Pawn(dist);
