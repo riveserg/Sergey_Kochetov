@@ -21,6 +21,10 @@ public class Tracker {
      *  Default array ?.
      */
     private static final int ARRAY_LENGTH = 16;
+    /**
+     * Item ID.
+     */
+    private int id = 1;
 
     /**
      *  Getter items.
@@ -38,7 +42,9 @@ public class Tracker {
      */
     public Item add(Item item) {
             this.toExpandArray();
-            this.items[position++] = item;
+            this.items[position] = item;
+            this.items[position].setId(String.valueOf(id++));
+            position++;
         return item;
     }
 

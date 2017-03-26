@@ -1,7 +1,5 @@
 package kochetov.start;
 
-import java.util.Random;
-
 /**
  * Item.
  *
@@ -40,7 +38,7 @@ public class Item {
     public Item(String name, String desc) {
         this.name = name;
         this.desc = desc;
-        this.id = String.valueOf((int) (new Random().nextDouble() * 10000));
+
         this.created = System.currentTimeMillis();
     }
 
@@ -113,9 +111,18 @@ public class Item {
     }
 
     /**
+     * Setter id.
+     * @param id - id
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    /**
      *  Item to string.
      * @return result
      */
+
     @Override
     public String toString() {
         String result;

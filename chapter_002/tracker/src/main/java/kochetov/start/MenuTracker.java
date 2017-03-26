@@ -171,7 +171,7 @@ public class MenuTracker {
             String id = input.ask("id : ");
             String name = input.ask("name : ");
             String desc = input.ask("desc : ");
-            tracker.add(new Item(name, desc, id));
+            tracker.update(new Item(name, desc, id));
         }
 
         /**
@@ -308,7 +308,7 @@ public class MenuTracker {
          */
         @Override
         public void execute(Input input, Tracker tracker) {
-            System.exit(1);
+
         }
 
         /**
