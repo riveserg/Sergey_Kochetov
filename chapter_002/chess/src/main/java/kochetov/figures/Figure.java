@@ -76,7 +76,7 @@ public abstract class Figure {
             result[countCell++] = new Cell(srcX, srcY);
         } while (countCell != cellLength);
 
-        if (result[result.length-1].getX()!=dist.getX() || result[result.length-1].getY()!=dist.getY()) {
+        if (result[result.length - 1].getX()!=dist.getX() || result[result.length - 1].getY() != dist.getY()) {
             throw new ImpossibleMoveException("The movement of the figures is not possible");
 
         }

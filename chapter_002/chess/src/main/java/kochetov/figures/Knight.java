@@ -30,8 +30,8 @@ public class Knight extends Figure {
     public Cell[] way(Cell dist) throws ImpossibleMoveException {
         Cell[] result = new Cell[1];
         int moduleX = Math.abs(this.position.getX() - dist.getX());
-        int moduleY = Math.abs((this.position.getY() - dist.getY()));
-        if ((moduleX == 1 && moduleY == 2)||(moduleX == 2 && moduleY == 1)) {
+        int moduleY = Math.abs(this.position.getY() - dist.getY());
+        if ((moduleX == 1 && moduleY == 2) || (moduleX == 2 && moduleY == 1)) {
             result[1] = dist;
         } else {
             throw new ImpossibleMoveException("The movement of the knight is not possible");
