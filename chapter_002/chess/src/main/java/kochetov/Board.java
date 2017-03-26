@@ -9,14 +9,7 @@ import kochetov.figures.Figure;
  * @since 0.1
  */
 public class Board {
-    /**
-     * Size of chess board.
-     */
-    public static final int SIZE_BOARD = 8;
-    /**
-     * Array of cells to init board.
-     */
-    private Cell[][] board = new Cell[SIZE_BOARD][SIZE_BOARD];
+
     /**
      * Figures on the board.
      */
@@ -55,14 +48,14 @@ public class Board {
             throw  new FigureNotFoundException("Figure not found");
         }
         Cell[] moveFigure = null;
-        int posititionSource = -1;
+        int positionSource = -1;
 
         for (int i = 0; i < this.figures.length; i++) {
             if ((this.figures[i].getPosition().getX() == source.getX()) &&
                     ((this.figures[i].getPosition().getY() == source.getY()))) {
                // if the movement is not possible throws ImpossibleMoveException
                moveFigure = this.figures[i].way(dist);
-               posititionSource = i;
+               positionSource = i;
                 }
         }
         if (moveFigure != null) {
@@ -75,7 +68,7 @@ public class Board {
             throw  new FigureNotFoundException("Figure not found");
         }
 
-        this.figures[posititionSource] = this.figures[posititionSource].clone(dist);
+        this.figures[positionSource] = this.figures[positionSource].clone(dist);
         source.setFigure(false);
 
         return true;

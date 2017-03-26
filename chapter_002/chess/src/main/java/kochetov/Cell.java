@@ -86,4 +86,24 @@ public class Cell {
         String result = String.format("Cell{x=%d, y=%d}", getX(), getY());
         return result;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Cell cell = (Cell) o;
+
+        if (existsFigure != cell.existsFigure) return false;
+        if (x != cell.x) return false;
+        return y == cell.y;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (existsFigure ? 1 : 0);
+        result = 31 * result + x;
+        result = 31 * result + y;
+        return result;
+    }
 }
