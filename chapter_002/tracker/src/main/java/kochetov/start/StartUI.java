@@ -20,7 +20,7 @@ public class StartUI{
      * @param input - input
      * @param tracker - tracker
      */
-    private int[] range = {0, 1, 2, 3, 4, 5, 6, 7};
+    private int[] range = {0, 1, 2, 3, 4, 5, 6};
 
     public StartUI(Input input, Tracker tracker) {
         this.input = input;
