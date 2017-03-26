@@ -1,7 +1,6 @@
 package kochetov.figures;
 
 import kochetov.Cell;
-import kochetov.ImpossibleMoveException;
 
 /**
  * Bishop.
@@ -28,7 +27,7 @@ public class Bishop extends Figure {
      */
     @Override
     public Figure clone(Cell dist) {
-        return (Bishop) new Bishop(dist);
+        return new Bishop(dist);
     }
 
 }

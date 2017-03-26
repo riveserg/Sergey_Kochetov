@@ -25,7 +25,9 @@ public class BishopTest {
         String except = "Bishop";
         assertThat(result, is(except));
     }
-
+    /**
+     *  Test.
+     */
     @Test(expected = ImpossibleMoveException.class)
     public void whenBishopMoveCorrectlyThenPoppingUpTheException() {
         Bishop bishop = new Bishop(new Cell(0, 0));
@@ -34,7 +36,9 @@ public class BishopTest {
         Cell[] except = {new Cell(1, 1), new Cell(2, 2)};
         assertThat(result, is(except));
     }
-
+    /**
+     *  Test.
+     */
     @Test
     public void whenBishopMoveCorrectlyThenBishopIsPathOfMotion() {
         Bishop bishop = new Bishop(new Cell(0, 0));

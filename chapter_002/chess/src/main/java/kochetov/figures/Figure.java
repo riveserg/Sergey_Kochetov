@@ -10,7 +10,7 @@ import kochetov.ImpossibleMoveException;
  * @version $Id$
  * @since 0.1
  */
-public class Figure {
+public abstract class Figure {
     /**
      * Position ob the board.
      */
@@ -24,7 +24,7 @@ public class Figure {
      *  Constructor.
      * @param position - position
      */
-    Figure(Cell position) {
+    public Figure(Cell position) {
         this.position = position;
     }
 
@@ -46,7 +46,6 @@ public class Figure {
         } else {
             return "Figure";
         }
-
     }
 
     /**
@@ -89,21 +88,7 @@ public class Figure {
      * @param dist - position figure
      * @return - figure
      */
-    public Figure clone(Cell dist){ return null;}
-
-    public void echo(Cell[] cells) {
-        for (Cell cell : cells) {
-            System.out.print("{x="+cell.getX()+" y="+cell.getY()+"}");
-        }
-        System.out.println();
-    }
+    public abstract Figure clone(Cell dist);
 
 
-    public static void main(String[] args) {
-        Figure figure = new Figure(new Cell(1,1, true));
-        Cell[] fig = figure.way(new Cell(1,5));
-        System.out.println(fig.length);
-        figure.echo(fig);
-
-    }
 }

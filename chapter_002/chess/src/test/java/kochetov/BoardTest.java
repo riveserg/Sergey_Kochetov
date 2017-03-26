@@ -33,16 +33,21 @@ public class BoardTest {
         Board board = new Board(new Figure[]{bishop, bishopTwo});
 
         board.move(new Cell(0, 0, true), new Cell(3, 3));
-
     }
+
     /**
-     * Test. Не могу понять как тестировать(
+     * Test
      */
- /*   @Test
-    public void whenMovingTestThenOk() {
-        Bishop bishop = new Bishop(new Cell(0, 0, true));
-        Bishop bishopTwo = new Bishop(new Cell(5, 5, true));
+    @Test
+    public void whenMovingTestThenOk(){
+        Bishop bishop = new Bishop(new Cell(1,1, true));
+        Bishop bishopTwo = new Bishop(new Cell(6,6, true));
+
         Board board = new Board(new Figure[]{bishop, bishopTwo});
-        board.move(new Cell(0, 0, true), new Cell(3, 3));
-    }*/
+        boolean fig = board.move(new Cell(1,1, true), new Cell(5, 5));
+        String result = String.format("%d %d", 5, 5);
+        String expected = String.format("%d %d", board.getFigures()[0].getPosition().getX(), board.getFigures()[0].getPosition().getY());
+
+        assertThat(result, is(expected));
+    }
 }
