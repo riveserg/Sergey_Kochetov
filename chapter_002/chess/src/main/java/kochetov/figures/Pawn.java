@@ -21,7 +21,4 @@ public class Pawn extends Figure {
         return new Pawn(dist);
     }
 
-    public static void main(String[] args) {
-        System.out.println( "4/2=" + 4/2 == "4/2=2");
-    }
 }
