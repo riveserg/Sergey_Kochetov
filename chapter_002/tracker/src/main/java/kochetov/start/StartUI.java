@@ -20,6 +20,8 @@ public class StartUI{
      * @param input - input
      * @param tracker - tracker
      */
+    private int[] range = {0, 1, 2, 3, 4, 5, 6, 7};
+
     public StartUI(Input input, Tracker tracker) {
         this.input = input;
         this.tracker = tracker;
@@ -36,7 +38,7 @@ public class StartUI{
             if (!(this.input instanceof StubInput)) {
                 menu.show();
             }
-            int key = Integer.valueOf(input.ask("Select: "));
+            int key = input.ask("Select: ", range);
             if (key != 6) {
                 menu.select(key);
             } else {

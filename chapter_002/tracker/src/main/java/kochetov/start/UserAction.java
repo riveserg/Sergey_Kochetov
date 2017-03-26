@@ -9,12 +9,6 @@ package kochetov.start;
  */
 public interface UserAction {
     /**
-     *  Key operation.
-     * @return key
-     */
-    int key();
-
-    /**
      *  Execute.
      * @param input - input
      * @param tracker - tracker
@@ -22,8 +16,8 @@ public interface UserAction {
     void execute(Input input, Tracker tracker);
 
     /**
-     *  Information about the operation.
-     * @return tag
+     * Info.
+     * @return info tag.
      */
     String info();
 }
