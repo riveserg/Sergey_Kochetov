@@ -44,13 +44,8 @@ public class Board {
      */
     boolean move(Cell source, Cell dist) throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
 
-        if (!source.isExistsFigure()) {
-            throw  new FigureNotFoundException("Figure not found");
-        }
-
         Cell[] moveFigure = null;
         int positionSource = -1;
-
         for (int i = 0; i < this.figures.length; i++) {
             if ((this.figures[i].getPosition().getX() == source.getX()) &&
                     ((this.figures[i].getPosition().getY() == source.getY()))) {
@@ -58,22 +53,39 @@ public class Board {
                // if the movement is not possible throws ImpossibleMoveException
                moveFigure = this.figures[i].way(dist);
                positionSource = i;
-                }
+            }
         }
         if (positionSource == -1) {
             throw  new FigureNotFoundException("Figure not found");
         }
-        if (moveFigure != null) {
-            for (Cell cell : moveFigure) {
-                for (Figure figure : this.figures) {
-                    if (cell.getX() == figure.getPosition().getX() && cell.getY() == figure.getPosition().getY()) {
-                        throw new OccupiedWayException("The cell occupied by another piece");
-                    }
-                }
-            }
+        if (!canMovement(moveFigure)) {
+            throw new OccupiedWayException("The cell occupied by another piece");
         }
         this.figures[positionSource] = this.figures[positionSource].clone(dist);
         return true;
     }
+
+    /**
+     *  On the path there are obstacles?
+     * @param cells - array cells
+     * @return - result
+     */
+    boolean canMovement(Cell[] cells) {
+        boolean result = true;
+        if (cells != null) {
+            for (Cell cell : cells) {
+                for (Figure figure : this.figures) {
+                    if (cell.getX() == figure.getPosition().getX() && cell.getY() == figure.getPosition().getY()) {
+                       result = false;
+                    }
+                }
+            }
+        } else {
+            throw new NullPointerException("Not valid data");
+        }
+        return result;
+    }
+
+
 
 }
