@@ -1,6 +1,5 @@
 package kochetov;
 
-import kochetov.figures.Bishop;
 import kochetov.figures.Figure;
 /**
  * Board.
@@ -84,6 +83,11 @@ public class Board {
             throw new NullPointerException("Not valid data");
         }
         return result;
+    }
+
+    boolean walk(Figure figure) {
+
+        return true;
     }
 
 

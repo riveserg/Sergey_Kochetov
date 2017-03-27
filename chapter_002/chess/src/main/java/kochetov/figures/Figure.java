@@ -20,12 +20,27 @@ public abstract class Figure {
      */
     String name;
 
+
+
+    final boolean isWhiteColor;
+
     /**
      *  Constructor.
      * @param position - position
      */
     public Figure(Cell position) {
         this.position = position;
+        this.isWhiteColor = true;
+    }
+
+    /**
+     *  Constructor.
+     * @param position - position
+     * @param isWhiteColor - color figure
+     */
+    public Figure(Cell position, boolean isWhiteColor) {
+        this.position = position;
+        this.isWhiteColor = isWhiteColor;
     }
 
     /**

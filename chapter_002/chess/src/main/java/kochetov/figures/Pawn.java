@@ -18,6 +18,17 @@ public class Pawn extends Figure {
         super(position);
         this.name = "Pawn";
     }
+
+    /**
+     * Constructor.
+     * @param position - position
+     * @param isWhiteColor - pawn color
+     */
+    public Pawn(Cell position, boolean isWhiteColor) {
+        super(position, isWhiteColor);
+        this.name = "Pawn";
+    }
+
     /**
      *  Clone.
      * @param dist - position figure

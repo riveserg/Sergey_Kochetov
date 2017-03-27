@@ -21,6 +21,16 @@ public class Knight extends Figure {
     }
 
     /**
+     *  Constructor.
+     * @param position - position
+     * @param isWhiteColor - Knight color
+     */
+    public Knight(Cell position, boolean isWhiteColor) {
+        super(position, isWhiteColor);
+        this.name = "Knight";
+    }
+
+    /**
      *  An of traversed cells.
      * @param dist - cell where is the figure
      * @return cell
@@ -32,7 +42,7 @@ public class Knight extends Figure {
         int moduleX = Math.abs(this.position.getX() - dist.getX());
         int moduleY = Math.abs(this.position.getY() - dist.getY());
         if ((moduleX == 1 && moduleY == 2) || (moduleX == 2 && moduleY == 1)) {
-            result[1] = dist;
+            result[0] = dist;
         } else {
             throw new ImpossibleMoveException("The movement of the knight is not possible");
         }

@@ -18,6 +18,16 @@ public class Rook extends Figure {
         super(position);
         this.name = "Rook";
     }
+
+    /**
+     * Constructor.
+     * @param position - position
+     * @param isWhiteColor - Rook color
+     */
+    public Rook(Cell position, boolean isWhiteColor) {
+        super(position, isWhiteColor);
+    }
+
     /**
      *  Clone.
      * @param dist - position figure

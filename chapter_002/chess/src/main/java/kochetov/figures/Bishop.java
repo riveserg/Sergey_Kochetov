@@ -21,6 +21,16 @@ public class Bishop extends Figure {
     }
 
     /**
+     * Constructor.
+     * @param position - position
+     * @param isWhiteColor -  bishop color
+     */
+    public Bishop(Cell position, boolean isWhiteColor) {
+        super(position, isWhiteColor);
+        this.name = "Bishop";
+    }
+
+    /**
      *  Clone.
      * @param dist - position figure
      * @return clone figure

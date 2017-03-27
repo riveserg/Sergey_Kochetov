@@ -18,6 +18,16 @@ public class Queen extends Figure {
         super(position);
         this.name = "Queen";
     }
+
+    /**
+     * Constructor.
+     * @param position - position
+     * @param isWhiteColor - Queen color
+     */
+    public Queen(Cell position, boolean isWhiteColor) {
+        super(position, isWhiteColor);
+    }
+
     /**
      *  Clone.
      * @param dist - position figure
