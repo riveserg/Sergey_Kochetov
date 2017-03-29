@@ -1,8 +1,21 @@
 import java.util.*;
-
+/**
+ * Money.
+ *
+ * @author Kochetov
+ * @version $Id$
+ * @since 0.1
+ */
 public class Money {
-
+    /**
+     * Array coins.
+     */
     private  int[] coinsNom;
+
+    /**
+     * Constructor.
+     * @param coinsNom - array coins
+     */
 
     public Money(int[] coinsNom) {
         this.coinsNom = coinsNom;
