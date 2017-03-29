@@ -57,4 +57,5 @@ public class Knight extends Figure {
     public Figure clone(Cell dist) {
         return new Knight(dist);
     }
+
 }

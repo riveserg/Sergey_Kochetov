@@ -1,6 +1,8 @@
 package kochetov.figures;
 
 import kochetov.Cell;
+import kochetov.ImpossibleMoveException;
+
 /**
  * Pawn.
  *
@@ -37,6 +39,17 @@ public class Pawn extends Figure {
     @Override
     public Figure clone(Cell dist) {
         return new Pawn(dist);
+    }
+
+    /**
+     * An array of traversed cells.
+     * @param dist - cell where is the figure
+     * @return array cells
+     * @throws ImpossibleMoveException - exception
+     */
+    @Override
+    public Cell[] way(Cell dist) throws ImpossibleMoveException {
+        return super.way(dist);
     }
 
 }

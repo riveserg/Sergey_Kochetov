@@ -1,6 +1,7 @@
 package kochetov.figures;
 
 import kochetov.Cell;
+import kochetov.ImpossibleMoveException;
 
 /**
  * Bishop.
@@ -40,4 +41,14 @@ public class Bishop extends Figure {
         return new Bishop(dist);
     }
 
+    /**
+     * An array of traversed cells.
+     * @param dist - cell where is the figure
+     * @return array cells
+     * @throws ImpossibleMoveException - exception
+     */
+    @Override
+    public Cell[] way(Cell dist) throws ImpossibleMoveException {
+        return super.way(dist);
+    }
 }
