@@ -48,6 +48,9 @@ public class ConvertListTest {
         assertThat(result, is(expected));
     }
 
+    /**
+     * Test.
+     */
     @Test
     public void whenConversionListArraysInASingleIntegerWorksheet() {
         ConvertList convertList = new ConvertList();
