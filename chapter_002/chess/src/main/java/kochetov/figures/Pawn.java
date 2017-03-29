@@ -49,7 +49,18 @@ public class Pawn extends Figure {
      */
     @Override
     public Cell[] way(Cell dist) throws ImpossibleMoveException {
-        return super.way(dist);
+        Cell[] result = null;
+        if ((this.position.getY() == 1 && this.isWhiteColor) ||
+                (this.position.getY() == 6 && !this.isWhiteColor)) {
+            if (this.position.getX() == dist.getX() && Math.abs(this.position.getY() - dist.getY()) <= 2) {
+                result = super.way(dist);
+            }
+        } else if(this.position.getX() == dist.getX() && Math.abs(this.position.getY() - dist.getY()) == 1) {
+            result = super.way(dist);
+        } else {
+            throw new ImpossibleMoveException("The movement of the pawn is not possible");
+        }
+        return result;
     }
 
 }

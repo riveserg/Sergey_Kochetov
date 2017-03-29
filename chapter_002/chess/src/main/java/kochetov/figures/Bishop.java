@@ -49,6 +49,13 @@ public class Bishop extends Figure {
      */
     @Override
     public Cell[] way(Cell dist) throws ImpossibleMoveException {
-        return super.way(dist);
+        Cell[] result = null;
+        if (Math.abs(this.position.getX() - dist.getX()) == Math.abs(this.position.getY() - dist.getY())) {
+            result = super.way(dist);
+        } else {
+            throw new ImpossibleMoveException("The movement of the bishop is not possible");
+        }
+        return result;
+
     }
 }

@@ -48,6 +48,12 @@ public class Rook extends Figure {
      */
     @Override
     public Cell[] way(Cell dist) throws ImpossibleMoveException {
-        return super.way(dist);
+        Cell[] result = null;
+        if((this.position.getX() == dist.getX()) || (this.position.getY() == dist.getY())) {
+            result = super.way(dist);
+        } else {
+            throw new ImpossibleMoveException("The movement of the rook is not possible");
+        }
+        return result;
     }
 }
