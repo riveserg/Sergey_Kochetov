@@ -51,8 +51,9 @@ public class Money {
      * @param args - args
      */
     public static void main(String[] args) {
-        Money coins = new Money(new int[] {1, 2, 5});
-        coins.getCountOfWays(21);
+        Money coins = new Money(new int[] {1, 2, 5, 10, 25, 50});
+        coins.getCountOfWays(200);
 
     }
+
 }
