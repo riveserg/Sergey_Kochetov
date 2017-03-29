@@ -1,6 +1,7 @@
 package kochetov;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -50,6 +51,29 @@ public class ConvertList {
             throw new RuntimeException("No valid rows");
         }
         return result;
+    }
+
+    public List<Integer> convert (List<int[]> list){
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            int[] arrays = list.get(i);
+            for (int array : arrays) {
+                result.add(array);
+            }
+        }
+        Collections.sort(result);
+        return result;
+    }
+
+    public static void main(String[] args) {
+        ConvertList convertList = new ConvertList();
+        ArrayList<int[]> list = new ArrayList<>();
+        list.add(new int[]{3, 4, 5, 6});
+        list.add(new int[]{1, 2});
+        List<Integer> result = convertList.convert(list);
+        for (Integer x: result) {
+            System.out.print(x+" ");
+        }
     }
 
 }

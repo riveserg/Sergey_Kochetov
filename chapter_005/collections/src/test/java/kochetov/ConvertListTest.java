@@ -33,7 +33,7 @@ public class ConvertListTest {
      * Test.
      */
     @Test
-    public void whenItComesToTheSheetThenItIsConvertedToAnArray() {
+    public void whenItComesToTheListThenItIsConvertedToAnArray() {
         ConvertList convertList = new ConvertList();
         List<Integer> list = new ArrayList<>();
         for (int i = 1; i < 8; i++) {
@@ -46,6 +46,19 @@ public class ConvertListTest {
                 {7, 0, 0}
         };
         assertThat(result, is(expected));
+    }
 
+    @Test
+    public void whenConversionListArraysInASingleIntegerWorksheet() {
+        ConvertList convertList = new ConvertList();
+        List<int[]> list = new ArrayList<>();
+        list.add(new int[]{3, 4, 5, 6});
+        list.add(new int[]{1, 2});
+        List<Integer> expected = new ArrayList<>();
+        for (int i = 1; i < 7; i++) {
+            expected.add(i);
+        }
+        List<Integer> result = convertList.convert(list);
+        assertThat(result, is(expected));
     }
 }
