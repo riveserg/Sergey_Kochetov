@@ -53,6 +53,11 @@ public class ConvertList {
         return result;
     }
 
+    /**
+     *  Method convert list arrays to one list
+     * @param list - list
+     * @return result list
+     */
     public List<Integer> convert (List<int[]> list){
         List<Integer> result = new ArrayList<>();
         for (int i = 0; i < list.size(); i++) {
@@ -64,16 +69,4 @@ public class ConvertList {
         Collections.sort(result);
         return result;
     }
-
-    public static void main(String[] args) {
-        ConvertList convertList = new ConvertList();
-        ArrayList<int[]> list = new ArrayList<>();
-        list.add(new int[]{3, 4, 5, 6});
-        list.add(new int[]{1, 2});
-        List<Integer> result = convertList.convert(list);
-        for (Integer x: result) {
-            System.out.print(x+" ");
-        }
-    }
-
 }
