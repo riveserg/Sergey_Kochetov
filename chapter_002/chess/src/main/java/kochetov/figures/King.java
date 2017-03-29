@@ -50,7 +50,7 @@ public class King extends Figure {
     @Override
     public Cell[] way(Cell dist) throws ImpossibleMoveException {
         Cell[] result = null;
-        if((Math.abs(this.position.getX() - dist.getX()) == 1) && (Math.abs(this.position.getY() - dist.getY()) == 1)) {
+        if((Math.abs(this.position.getX() - dist.getX()) <= 1) && (Math.abs(this.position.getY() - dist.getY()) <= 1)) {
             result = super.way(dist);
         } else {
             throw new ImpossibleMoveException("The movement of the king is not possible");
