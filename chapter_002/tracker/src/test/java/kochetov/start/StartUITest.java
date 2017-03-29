@@ -1,5 +1,7 @@
 package kochetov.start;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -16,11 +18,19 @@ import static org.junit.Assert.assertThat;
  * @version $Id$
  * @since 0.1
  */
-public class StartUITest implements Closeable{
+public class StartUITest {
     /**
      * Byte Array Output Stream.
      */
-    private  ByteArrayOutputStream out = new ByteArrayOutputStream();
+    private  ByteArrayOutputStream out;
+
+    /**
+     * initial ByteArrayOutputStream.
+     */
+    @Before
+    public void initBAOS() {
+        out = new ByteArrayOutputStream();
+    }
 
     /**
      * Test.
@@ -116,13 +126,14 @@ public class StartUITest implements Closeable{
         final String expect = String.format("Item{name='aaa', desc='bbb'}%s", System.getProperty("line.separator"));
         assertThat(out.toString(), is(expect));
     }
-
     /**
      * Close Byte Array Output Stream.
      * @throws IOException - exception
      */
-    @Override
+    @After
     public void close() throws IOException {
         out.close();
     }
+
+
 }
