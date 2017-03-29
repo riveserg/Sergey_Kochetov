@@ -13,11 +13,10 @@ import java.util.TreeSet;
  * @version $Id$
  * @since 0.1
  */
-
-/**
- *
- */
 public class PerformanceCollectionsTest {
+    /**
+     * amount.
+     */
     private final int  amount = 100_000;
     /**
      * Test add and remove for ArrayList.
