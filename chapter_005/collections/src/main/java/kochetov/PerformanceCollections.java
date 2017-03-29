@@ -20,7 +20,7 @@ public class PerformanceCollections {
     public long add(Collection<String> collection, String line, int amount) {
         final long startTime = System.currentTimeMillis();
         for (int i = 0; i < amount; i++) {
-            collection.add(line + i);
+            collection.add(String.format("%s + %d",line, i));
         }
         return (System.currentTimeMillis() - startTime);
     }
