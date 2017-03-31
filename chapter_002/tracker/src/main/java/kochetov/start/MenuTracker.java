@@ -1,5 +1,8 @@
 package kochetov.start;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * MenuTracker.
  *
@@ -19,11 +22,7 @@ public class MenuTracker {
     /**
      * Array actions.
      */
-    private UserAction[] actions = new UserAction[7];
-    /**
-     * Position of the array.
-     */
-    private int position = 0;
+    private List<UserAction> actions = new ArrayList<>();
 
     /**
      * Constructor.
@@ -40,7 +39,7 @@ public class MenuTracker {
      * @param action - action
      */
     public void addAction(UserAction action) {
-        this.actions[position++] = action;
+        this.actions.add(action);
     }
 
     /**
@@ -63,7 +62,7 @@ public class MenuTracker {
      * @param key - key
      */
     public void select(int key) {
-        this.actions[key].execute(this.input, this.tracker);
+        this.actions.get(key).execute(this.input, this.tracker);
     }
 
     /**

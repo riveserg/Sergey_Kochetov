@@ -1,6 +1,11 @@
 package kochetov.start;
 
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+
 /**
  * Tracker.
  *
@@ -12,15 +17,7 @@ public class Tracker {
     /**
      *  items.
      */
-    private Item[] items;
-    /**
-     * Position array items.
-     */
-    private int position = 0;
-    /**
-     *  Default array ?.
-     */
-    private static final int ARRAY_LENGTH = 16;
+    private List<Item> items = new ArrayList<>();
     /**
      * Item ID.
      */
@@ -30,7 +27,7 @@ public class Tracker {
      *  Getter items.
      * @return all items
      */
-    public Item[] getAll() {
+    public List<Item> getAll() {
         return items;
     }
 
@@ -41,35 +38,21 @@ public class Tracker {
      * @return added item
      */
     public Item add(Item item) {
-            this.toExpandArray();
-            this.items[position] = item;
-            this.items[position].setId(String.valueOf(id++));
-            position++;
+            if (item != null) {
+                item.setId(String.valueOf(id++));
+                this.items.add(item);
+            }
         return item;
     }
-
-    /**
-     * Method creates the array if it is null or expands the array when is full.
-     */
-    private void toExpandArray() {
-        if (items == null) {
-            this.items = new Item[ARRAY_LENGTH];
-        } else if (this.items.length == position) {
-            Item[] newItems = new Item[this.items.length + ARRAY_LENGTH];
-            System.arraycopy(this.items, 0, newItems, 0, position);
-            this.items = newItems;
-        }
-    }
-
     /**
      * Update item.
      * @param item - item
      */
     public void update(Item item) {
-        for (int i = 0; i < position; i++) {
-            if (this.items[i].getId().equals(item.getId())) {
-                this.items[i].setName(item.getName());
-                this.items[i].setDesc(item.getDesc());
+        for (Item list : items) {
+            if (list.getId().equals(item.getId())) {
+                list.setName(item.getName());
+                list.setDesc(item.getDesc());
                 break;
             }
         }
@@ -80,13 +63,10 @@ public class Tracker {
      * @param item - item
      */
     public void delete(Item item) {
-        for (int i = 0; i < position; i++) {
-            if (item != null && this.items[i].getId().equals(item.getId())) {
-                if (i != this.items.length - 1) {
-                    //this.items[i] = null;
-                    System.arraycopy(this.items, i + 1, this.items, i, this.items.length - i - 1);
-                    position--;
-                }
+        Iterator<Item> it = this.items.iterator();
+        while (it.hasNext()) {
+            if (it.next().getId().equals(item.getId())) {
+                it.remove();
                 break;
             }
         }
@@ -96,10 +76,15 @@ public class Tracker {
      *  Returns a copy of array items without null elements.
      * @return new array item
      */
-    public Item[] findAll() {
-        Item[] result = new Item[position];
-                System.arraycopy(this.items, 0, result, 0, position);
-        return result;
+    public List<Item> findAll() {
+        for (ListIterator<Item> it = this.items.listIterator(); it.hasNext(); ) {
+            Item item = it.next();
+            if(item == null) {
+                it.remove();
+            }
+        }
+
+        return this.items;
     }
 
     /**
@@ -107,16 +92,13 @@ public class Tracker {
      * @param key - item name
      * @return result
      */
-    public Item[] findByName(String key) {
-        Item[] tmp = new Item[position + 1];
-        int countFindName = 0;
-        for (int i = 0; i < position; i++) {
-            if (this.items[i].getName().equals(key)) {
-                tmp[countFindName++] = this.items[i];
+    public List<Item> findByName(String key) {
+        List<Item> result = new ArrayList<>();
+        for (Item item : this.items) {
+            if (item.getName().equals(key)) {
+                result.add(item);
             }
         }
-        Item[] result = new Item[countFindName];
-        System.arraycopy(tmp, 0, result, 0, countFindName);
         return result;
     }
 
@@ -127,10 +109,10 @@ public class Tracker {
      */
     public Item findById(String id) {
         Item result = null;
-        for (int i = 0; i < position; i++) {
-            if (id != null && this.items[i].getId().equals(id)) {
-               result = this.items[i];
-               break;
+        for (Item item : this.items) {
+            if (item.getId().equals(id)) {
+                result = item;
+                break;
             }
         }
         return result;

@@ -2,6 +2,9 @@ package kochetov.start;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 /**
@@ -20,7 +23,7 @@ public class TrackerTest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("name1", "text1"));
         final String except = String.format("Item{name='%s', desc='%s'}", "name1", "text1");
-        assertThat(tracker.getAll()[0].toString(), is(except));
+        assertThat(tracker.getAll().get(0).toString(), is(except));
     }
 
     /**
@@ -35,7 +38,7 @@ public class TrackerTest {
         tracker.update(item);
 
         final String except = String.format("Item{name='%s', desc='%s'}", "name1", "text1");
-        assertThat(tracker.getAll()[0].toString(), is(except));
+        assertThat(tracker.getAll().get(0).toString(), is(except));
     }
 
     /**
@@ -48,8 +51,10 @@ public class TrackerTest {
         Item item2 = tracker.add(new Item("name33", "text122"));
         Item item3 = tracker.add(new Item("name33", "text122"));
         tracker.delete(item2);
-        Item[] result = tracker.findAll();
-        Item[] expect = {item1, item3};
+        List<Item> result = tracker.findAll();
+        List<Item> expect = new ArrayList<>();
+        expect.add(item1);
+        expect.add(item3);
         assertThat(result, is(expect));
     }
 
@@ -60,8 +65,9 @@ public class TrackerTest {
     public void whenDeleteAllNullItemThenTrackerHasDeleteAllNullItem() {
         Tracker tracker = new Tracker();
         Item item2 = tracker.add(new Item("name33", "text122"));
-        Item[] result = tracker.findAll();
-        Item[] expect = {item2};
+        List<Item> result = tracker.findAll();
+        List<Item> expect = new ArrayList<>();
+        expect.add(item2);
         assertThat(result, is(expect));
     }
     /**
@@ -74,8 +80,11 @@ public class TrackerTest {
         Item item2 = tracker.add(new Item("name1", "text122"));
         Item item3 = tracker.add(new Item("name1", "text122"));
         Item item4 = tracker.add(new Item("name2", "text124"));
-        Item[] result = tracker.findByName("name1");
-        Item[] expect = {item1, item2, item3};
+        List<Item> result = tracker.findByName("name1");
+        List<Item> expect = new ArrayList<>();
+        expect.add(item1);
+        expect.add(item2);
+        expect.add(item3);
         assertThat(result, is(expect));
     }
     /**

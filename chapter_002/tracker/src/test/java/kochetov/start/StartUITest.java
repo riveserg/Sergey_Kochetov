@@ -40,7 +40,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});
         new StartUI(input, tracker).init();
-        assertThat(tracker.getAll()[0].getName(), is("test name"));
+        assertThat(tracker.findAll().get(0).getName(), is("test name"));
     }
 
     /**
@@ -51,7 +51,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});
         new StartUI(input, tracker).init();
-        assertThat(tracker.getAll()[0].getDesc(), is("desc"));
+        assertThat(tracker.findAll().get(0).getDesc(), is("desc"));
     }
 
     /**
@@ -63,7 +63,7 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"0", "aaa", "bbb", "0", "zzz", "xxx", "6"});
         new StartUI(input, tracker).init();
         final int  expect = 2;
-        assertThat(tracker.findAll().length, is(expect));
+        assertThat(tracker.findAll().size(), is(expect));
     }
     /**
      * Test
@@ -98,7 +98,7 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"0", "aaa", "bbb", "3", "1", "6"});
         new StartUI(input, tracker).init();
         final int  expect = 0;
-        assertThat(tracker.findAll().length, is(expect));
+        assertThat(tracker.findAll().size(), is(expect));
     }
     /**
      * Test
@@ -134,6 +134,5 @@ public class StartUITest {
     public void close() throws IOException {
         out.close();
     }
-
 
 }
