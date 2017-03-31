@@ -1,7 +1,6 @@
 package kochetov;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -62,13 +61,11 @@ public class ConvertList {
      */
     public List<Integer> convert (List<int[]> list){
         List<Integer> result = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            int[] arrays = list.get(i);
+        for (int[] arrays : list) {
             for (int array : arrays) {
                 result.add(array);
             }
         }
-        Collections.sort(result);
         return result;
     }
 }

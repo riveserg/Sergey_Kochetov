@@ -55,8 +55,10 @@ public class ConvertListTest {
     public void whenConversionListArraysInASingleIntegerWorksheet() {
         ConvertList convertList = new ConvertList();
         List<int[]> list = new ArrayList<>();
-        list.add(new int[]{3, 4, 5, 6});
+
         list.add(new int[]{1, 2});
+        list.add(new int[]{3, 4, 5, 6});
+
         List<Integer> expected = new ArrayList<>();
         for (int i = 1; i < 7; i++) {
             expected.add(i);
