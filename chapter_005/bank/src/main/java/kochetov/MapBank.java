@@ -119,7 +119,11 @@ public class MapBank {
     public boolean transferMoney(User srcUser, Account srcAccount, User dstUser, Account dstAccount, double amount) {
         boolean result = false;
             if (srcUser != null && srcAccount != null && dstUser != null && dstAccount != null) {
-                if (this.getAccountAmount(srcUser, srcAccount) >= amount) {
+                if (this.getAccountAmount(srcUser, srcAccount) >= amount &&
+                        this.accounts.containsKey(dstUser) &&
+                        this.accounts.containsKey(srcUser) &&
+                        this.accounts.get(dstUser).contains(dstAccount) &&
+                        this.accounts.get(srcUser).contains(srcAccount)) {
                     for (Account acc : this.accounts.get(srcUser)) {
                         if (acc.getRequisites().equals(srcAccount.getRequisites())) {
                             acc.writeOffMoney(amount);

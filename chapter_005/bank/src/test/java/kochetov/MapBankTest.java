@@ -130,5 +130,27 @@ public class MapBankTest {
         final boolean expected = true;
         assertThat(result, is(expected));
     }
+    /**
+     * Test.
+     */
+    @Test
+    public void whenCorrectTransferMoneyThenIsOk2(){
+        MapBank mapBank = new MapBank();
+        User user1 = new User("name1", "passport1");
+        Account account1 = new Account("1");
+        mapBank.addUser(user1);
+        mapBank.addAccountToUser(user1, account1);
+
+        User user2 = new User("name2", "passport2");
+        Account account2 = new Account("2");
+        account2.addMoney(200);
+        mapBank.addUser(user2);
+        mapBank.addAccountToUser(user2, account2);
+
+        final boolean result = mapBank.transferMoney(user1, account2, user2, account2, 50);
+
+        final boolean expected = false;
+        assertThat(result, is(expected));
+    }
 
 }
