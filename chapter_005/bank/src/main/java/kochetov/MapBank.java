@@ -33,10 +33,10 @@ public class MapBank {
      * @return list account by user
      */
     public List<Account> getListAccount(User user){
-        if (user == null) {
-            throw new UserNotFoundException();
-        } else {
+        if (user != null) {
             return  this.accounts.get(user);
+        } else {
+            throw new UserNotFoundException();
         }
     }
 
@@ -58,14 +58,8 @@ public class MapBank {
      * @param user - user
      */
     public void deleteUser(User user) {
-        if (user != null) {
-            Iterator<Map.Entry<User, List<Account>>> it = this.accounts.entrySet().iterator();
-           while (it.hasNext()) {
-               if (it.next().getKey().equals(user)) {
-                   it.remove();
-                   break;
-               }
-           }
+        if (user != null && this.accounts.containsKey(user)) {
+            this.accounts.remove(user);
         } else {
             throw new UserNotFoundException();
         }
@@ -77,13 +71,10 @@ public class MapBank {
      * @param account - account
      */
     public void addAccountToUser(User user, Account account) {
-        if (user == null) {
+        if (user == null && !this.accounts.containsKey(user)) {
             throw new UserNotFoundException();
-        }
-        for (Map.Entry<User, List<Account>> map : this.accounts.entrySet()) {
-            if (map.getKey().equals(user)) {
-               map.getValue().add(account);
-            }
+        } else if (account != null){
+            this.accounts.get(user).add(account);
         }
     }
     /**
@@ -92,13 +83,10 @@ public class MapBank {
      * @param account - account
      */
     public void deleteAccountFromUser(User user, Account account) {
-        if (user == null) {
+        if (user == null && !this.accounts.containsKey(user)) {
             throw new UserNotFoundException();
-        }
-        for (Map.Entry<User, List<Account>> map : this.accounts.entrySet()) {
-            if (map.getKey().equals(user)) {
-                map.getValue().remove(account);
-            }
+        } else if (account != null) {
+            this.accounts.get(user).remove(account);
         }
     }
 
@@ -109,13 +97,10 @@ public class MapBank {
      */
     public List<Account> getUserAccount(User user) {
         List<Account> result = null;
-        if (user == null) {
+        if (user == null && !this.accounts.containsKey(user)) {
             throw new UserNotFoundException();
-        }
-        for (Map.Entry<User, List<Account>> map : this.accounts.entrySet()) {
-            if (map.getKey().equals(user)) {
-                result = map.getValue();
-            }
+        } else {
+            result = this.accounts.get(user);
         }
         return result;
     }
@@ -133,21 +118,21 @@ public class MapBank {
      */
     public boolean transferMoney(User srcUser, Account srcAccount, User dstUser, Account dstAccount, double amount) {
         boolean result = false;
-            if (srcUser != null && srcAccount != null && dstUser != null && dstAccount != null)
-            if (this.getAccountAmount(srcUser, srcAccount) >= amount) {
-              for (Account acc : this.accounts.get(srcUser)){
-                  if (acc.getRequisites().equals(srcAccount.getRequisites())) {
-                      acc.writeOffMoney(amount);
-                  }
-              }
-                for (Account acc : this.accounts.get(dstUser)){
-                    if (acc.getRequisites().equals(dstAccount.getRequisites())) {
-                        acc.addMoney(amount);
+            if (srcUser != null && srcAccount != null && dstUser != null && dstAccount != null) {
+                if (this.getAccountAmount(srcUser, srcAccount) >= amount) {
+                    for (Account acc : this.accounts.get(srcUser)) {
+                        if (acc.getRequisites().equals(srcAccount.getRequisites())) {
+                            acc.writeOffMoney(amount);
+                        }
                     }
+                    for (Account acc : this.accounts.get(dstUser)) {
+                        if (acc.getRequisites().equals(dstAccount.getRequisites())) {
+                            acc.addMoney(amount);
+                        }
+                    }
+                    result = true;
                 }
-                result = true;
             }
-
         return result;
     }
 
