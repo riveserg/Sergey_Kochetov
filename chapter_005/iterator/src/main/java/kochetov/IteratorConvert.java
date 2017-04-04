@@ -44,15 +44,17 @@ public class IteratorConvert implements Converter, Iterator<Integer> {
      */
     @Override
     public Integer next() {
-        Integer result;
-        if (this.currentIterator.hasNext()) {
-            result = this.currentIterator.next();
-        } else if (this.iterator.hasNext()) {
-            this.currentIterator = this.iterator.next();
-            result = this.currentIterator.next();
-        } else {
+
+        if (!this.hasNext()) {
             throw new NoSuchElementException();
         }
+        Integer result;
+
+        if (!this.currentIterator.hasNext()) {
+            this.currentIterator = this.iterator.next();
+        }
+        result = this.currentIterator.next();
+
         return result;
     }
 }
