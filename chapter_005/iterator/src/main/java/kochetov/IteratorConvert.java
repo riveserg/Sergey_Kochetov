@@ -48,13 +48,11 @@ public class IteratorConvert implements Converter, Iterator<Integer> {
         if (!this.hasNext()) {
             throw new NoSuchElementException();
         }
-        Integer result;
 
         if (!this.currentIterator.hasNext()) {
             this.currentIterator = this.iterator.next();
         }
-        result = this.currentIterator.next();
 
-        return result;
+        return this.currentIterator.next();
     }
 }
