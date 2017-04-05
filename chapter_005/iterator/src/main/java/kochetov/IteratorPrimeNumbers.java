@@ -29,7 +29,8 @@ public class IteratorPrimeNumbers implements Iterator<Integer> {
     @Override
     public boolean hasNext() {
         for(int i = this.index; i < array.length; i++) {
-            int arrNumberLength = String.valueOf(array[i]).length();
+            int arrNumberLength = 1;
+            //arrNumberLength = String.valueOf(array[i]).length();
 
             for (int j = 2; j <= array[i]/arrNumberLength; j++) {
                 if (array[i] % j == 0) {

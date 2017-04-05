@@ -16,6 +16,7 @@
         <module>collections</module>
         <module>bank</module>
         <module>iterator</module>
+        <module>generic</module>
     </modules>
 
 </project>
