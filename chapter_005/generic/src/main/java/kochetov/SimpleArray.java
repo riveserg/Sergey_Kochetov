@@ -58,7 +58,7 @@ public class SimpleArray<E> {
      * @param value - new value
      */
     public void update(int position, E value) {
-        if(position>= 0 && position <= index) {
+        if(position>= 0 && position < index) {
             this.objects[position] = value;
         } else {
             throw new RuntimeException("Error update");
