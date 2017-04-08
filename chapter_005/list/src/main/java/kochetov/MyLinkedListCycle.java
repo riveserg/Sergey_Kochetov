@@ -28,11 +28,8 @@ public class MyLinkedListCycle<T> {
      * @return is cyclic or not (true/false)
      */
     public boolean hasCycle(Node first) {
-        if (first != null) {
-            return hasCycle(first.next, first);
-        } else {
-            return false;
-        }
+
+        return hasCycle(first.next, first);
     }
 
     /**
