@@ -13,7 +13,9 @@ public class SetLinkedArray<E> implements SimpleSet<E> {
      * Size SetLinkedArray.
      */
     int count = 0;
-
+    /**
+     * items.
+     */
     private Object[] items;
     /**
      * First object reference.
