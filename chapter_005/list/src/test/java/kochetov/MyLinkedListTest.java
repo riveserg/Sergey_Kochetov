@@ -39,7 +39,8 @@ public class MyLinkedListTest {
     public void whenAddOneElementAndMethodGetCallFirstElementThenReturnThrowException() {
         MyLinkedList list = new MyLinkedList();
         list.add("111");
-        list.get(1);
+        assertThat(list.get(1), is(111));
+
     }
 
     /**

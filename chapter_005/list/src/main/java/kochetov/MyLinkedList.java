@@ -1,6 +1,5 @@
 package kochetov;
 
-import javax.xml.soap.Node;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -54,7 +53,8 @@ public class MyLinkedList<E> implements SimpleContainer<E> {
      */
     @Override
     public E get(int index) {
-        return (E) this.findMyNodeByIndex(index);
+        this.checkElementIndex(index);
+        return (E) this.findMyNodeByIndex(index).item;
     }
 
     /**
@@ -62,6 +62,15 @@ public class MyLinkedList<E> implements SimpleContainer<E> {
      * @param index - index on MyLinkedList
      */
     private void checkPositionIndex(int index) {
+        if (index < 0 || index > this.size) {
+            throw new IndexOutOfBoundsException();
+        }
+    }
+    /**
+     * The index valid data?
+     * @param index - index on MyLinkedList
+     */
+    private void checkElementIndex(int index) {
         if (index < 0 || index >= this.size) {
             throw new IndexOutOfBoundsException();
         }
@@ -73,7 +82,6 @@ public class MyLinkedList<E> implements SimpleContainer<E> {
      * @return MyNode
      */
     private MyNode<E> findMyNodeByIndex(int index) {
-        this.checkPositionIndex(index);
         MyNode<E> result;
         if(index < (this.size / 2)) {
             result = this.first;
@@ -82,7 +90,7 @@ public class MyLinkedList<E> implements SimpleContainer<E> {
             }
         } else {
             result = this.last;
-            for(int i = this.size; i > index; i--) {
+            for(int i = this.size - 1; i > index; i--) {
                 result = result.prev;
             }
         }
