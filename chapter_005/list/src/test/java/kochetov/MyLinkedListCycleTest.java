@@ -16,7 +16,12 @@ public class MyLinkedListCycleTest {
     @Test
     public void whenIsCycledValidData() {
         MyLinkedListCycle list = new MyLinkedListCycle();
-        list.initValidData();
+
+        list.first.next = list.two;
+        list.two.next = list.third;
+        list.third.next = list.four;
+        list.four.next = list.first;
+        
         assertThat(list.hasCycle(list.first), is(true));
     }
     /**
@@ -25,7 +30,12 @@ public class MyLinkedListCycleTest {
     @Test
     public void whenIsCycledNotValidData() {
         MyLinkedListCycle list = new MyLinkedListCycle();
-        list.initNotValidData();
+
+        list.first.next = list.two;
+        list.two.next = list.third;
+        list.third.next = list.four;
+        list.four.next = null;
+
         assertThat(list.hasCycle(list.first), is(false));
     }
 }

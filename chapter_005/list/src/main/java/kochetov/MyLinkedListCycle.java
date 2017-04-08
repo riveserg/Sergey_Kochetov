@@ -54,29 +54,10 @@ public class MyLinkedListCycle<T> {
     }
 
     /**
-     * The method is initiated by valid data.
-     */
-     public void initValidData() {
-        first.next = two;
-        two.next = third;
-        third.next = four;
-        four.next = first;
-    }
-    /**
-     * The method is initiated by not valid data.
-     */
-    public void initNotValidData() {
-        first.next = two;
-        two.next = third;
-        third.next = four;
-        //four.next = first;
-    }
-
-    /**
      * Class stores a value and a link to the next element.
      * @param <T> - value
      */
-    private class Node<T> {
+    class Node<T> {
         /**
          * Value.
          */
