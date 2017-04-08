@@ -1,5 +1,6 @@
 package kochetov;
 
+import javax.xml.soap.Node;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
@@ -53,20 +54,7 @@ public class MyLinkedList<E> implements SimpleContainer<E> {
      */
     @Override
     public E get(int index) {
-        this.checkPositionIndex(index);
-        MyNode<E> result;
-        if (index < (size / 2)) {
-            result = this.first;
-            for (int i = 0; i < index; i++) {
-                result = result.next;
-            }
-        } else {
-            result = this.last;
-            for (int i = this.size - 1; i > index; i--) {
-                result = result.prev;
-            }
-        }
-        return result.item;
+        return (E) this.findMyNodeByIndex(index);
     }
 
     /**
@@ -74,9 +62,46 @@ public class MyLinkedList<E> implements SimpleContainer<E> {
      * @param index - index on MyLinkedList
      */
     private void checkPositionIndex(int index) {
-        if (index < 0 || index >= size) {
+        if (index < 0 || index >= this.size) {
             throw new IndexOutOfBoundsException();
         }
+    }
+
+    /**
+     * Find element by index.
+     * @param index - index
+     * @return MyNode
+     */
+    private MyNode<E> findMyNodeByIndex(int index) {
+        this.checkPositionIndex(index);
+        MyNode<E> result;
+        if(index < (this.size / 2)) {
+            result = this.first;
+            for (int i = 0; i < index; i++) {
+                result = result.next;
+            }
+        } else {
+            result = this.last;
+            for(int i = this.size; i > index; i--) {
+                result = result.prev;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Delete element by index.
+     * @param index - index
+     */
+    public void remove(int index) {
+        MyNode<E> nodeToDel = this.findMyNodeByIndex(index);
+        if (nodeToDel.next != null) {
+            nodeToDel.next.prev = nodeToDel.prev;
+        }
+        if (nodeToDel.prev != null) {
+            nodeToDel.prev.next = nodeToDel.next;
+        }
+        this.size--;
     }
 
     /**
