@@ -95,9 +95,4 @@ public class MyLinkedListCycle<T> {
             this.next = null;
         }
     }
-
-    public static void main(String[] args) {
-        MyLinkedListCycle list = new MyLinkedListCycle();
-        System.out.println(list.hasCycle(list.first));
-    }
 }
