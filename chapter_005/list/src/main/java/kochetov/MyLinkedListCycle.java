@@ -37,17 +37,17 @@ public class MyLinkedListCycle<T> {
 
     /**
      * Method to determine the cyclical nature of our list.
-     * @param first - element list
-     * @param next - recursive first element
+     * @param node - element list
+     * @param first - recursive first element
      * @return is cyclic or not (true/false)
      */
-    private boolean hasCycle(Node first, Node next) {
+    private boolean hasCycle(Node node, Node first) {
         boolean result = false;
-        if (first != null) {
-            if(next == first.next) {
+        if (node != null) {
+            if(first == node.next) {
                 result = true;
             } else {
-                result = hasCycle(first.next, next);
+                result = hasCycle(node.next, first);
             }
         }
            return result;
