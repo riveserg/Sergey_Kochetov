@@ -27,6 +27,18 @@ public class SetArrayTest {
      * Test.
      */
     @Test
+    public void whenAddTwoElementAndRemoveOneThenIsOk() {
+        SetArray set = new SetArray(10);
+        set.add("111");
+        set.add("222");
+        set.remove("111");
+        Iterator itr = set.iterator();
+        assertThat( itr.next(), is("222"));
+    }
+    /**
+     * Test.
+     */
+    @Test
     public void whenIteratorNextThenResultFirstElement() {
         SetArray set = new SetArray(10);
         set.add("222");
