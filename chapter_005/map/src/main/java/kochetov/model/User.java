@@ -11,15 +11,15 @@ public class User {
     /**
      * Name.
      */
-    private String name;
+    private final String name;
     /**
      * Children.
      */
-    private int children;
+    private final int children;
     /**
      * Birthday.
      */
-    private Calendar birthday;
+    private final Calendar birthday;
 
     /**
      * Constructor.
@@ -27,7 +27,7 @@ public class User {
      * @param children - children
      * @param birthday - birthday
      */
-    public User(String name, int children, Calendar birthday) {
+    public User(final String name, final int children, final Calendar birthday) {
         this.name = name;
         this.children = children;
         this.birthday = birthday;
