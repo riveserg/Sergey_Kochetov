@@ -42,8 +42,6 @@ public class SetArray<E> implements SimpleSet<E> {
            if (isNew) {
                this.setArray[countSet++] = e;
            }
-        } else {
-            throw new NullPointerException();
         }
 
     }
@@ -69,8 +67,6 @@ public class SetArray<E> implements SimpleSet<E> {
                     System.arraycopy(this.setArray, i + 1, this.setArray, i, this.countSet--);
                 }
             }
-        } else {
-            throw new NullPointerException();
         }
 
     }

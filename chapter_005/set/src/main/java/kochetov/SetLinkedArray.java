@@ -62,8 +62,6 @@ public class SetLinkedArray<E> implements SimpleSet<E> {
                     this.count++;
                 }
             }
-        } else {
-            throw new NullPointerException();
         }
 
     }
