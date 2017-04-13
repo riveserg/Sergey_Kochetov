@@ -11,10 +11,7 @@ public class MyTree<E> {
      * Root.
      */
     private MyLeaf<E> root;
-    /**
-     * List of children.
-     */
-    private List<MyTree<E>> children;
+   
     /**
      * Size.
      */
