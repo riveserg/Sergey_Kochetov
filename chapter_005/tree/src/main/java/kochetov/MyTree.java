@@ -130,6 +130,10 @@ public class MyTree<E> {
             this.value = value;
         }
 
+       /**
+        * toString.
+        * @return string
+        */
        @Override
        public String toString() {
            return String.format("MyLeaf{%s}", value);
