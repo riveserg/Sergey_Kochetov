@@ -36,5 +36,18 @@ public class MyTreeTest {
 
         assertThat(tree.getChildren(), is(Arrays.asList("111", "222", "444","333" )));
     }
+    /**
+     * Test.
+     */
+    @Test
+    public void whenAddFourElementThenFindSecondElement() {
+        MyTree tree = new MyTree();
+        tree.addChild( "111");
+        tree.addChild( "222");
+        tree.addChild( "333");
+        tree.addChild( "444");
+
+        assertThat(tree.findElement("222").toString(), is("MyLeaf{222}"));
+    }
 
 }

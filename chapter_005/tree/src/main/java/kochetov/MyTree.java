@@ -11,11 +11,15 @@ public class MyTree<E> {
      * Root.
      */
     private MyLeaf<E> root;
-   
+
     /**
      * Size.
      */
     private int size = 0;
+    /**
+     * Elements tree.
+     */
+    private List<MyLeaf<E>> elements = new LinkedList<>();
 
     /**
      * Add to root.
@@ -42,11 +46,14 @@ public class MyTree<E> {
     private void addChild(MyLeaf<E> parent, E value) {
      if (this.root == null) {
          this.root = new MyLeaf<>(null, value);
+         this.elements.add(this.root);
      } else if (parent != null) {
          if (parent.left == null) {
              parent.left = new MyLeaf<>(parent, value);
+             this.elements.add(parent.left);
          } else if (parent.right == null) {
              parent.right = new MyLeaf<>(parent, value);
+             this.elements.add(parent.left);
          } else if (this.size % 2 == 0) {
              addChild(parent.left, value);
          } else {
@@ -79,23 +86,40 @@ public class MyTree<E> {
         return result;
     }
 
-    private class MyLeaf<E> {
+    /**
+     * Find element tree by value.
+     * @param value - value
+     * @return element
+     */
+    public MyLeaf<E> findElement(E value) {
+        MyLeaf<E> result = null;
+         for (MyLeaf<E> element : this.elements) {
+             if (element.value.equals(value)) {
+                 result = element;
+                 break;
+             }
+         }
+         return result;
+    }
+
+
+   class MyLeaf<E> {
         /**
          * Parent.
          */
-        private MyLeaf<E> parent;
+        MyLeaf<E> parent;
         /**
          * Left.
          */
-        private MyLeaf<E> left;
+        MyLeaf<E> left;
         /**
          * Right.
          */
-        private MyLeaf<E> right;
+        MyLeaf<E> right;
         /**
          * Value.
          */
-        private E value;
+        E value;
         /**
          * Constructor.
          * @param parent - parent leaf
@@ -105,5 +129,10 @@ public class MyTree<E> {
             this.parent = parent;
             this.value = value;
         }
-    }
+
+       @Override
+       public String toString() {
+           return String.format("MyLeaf{%s}", value);
+       }
+   }
 }
