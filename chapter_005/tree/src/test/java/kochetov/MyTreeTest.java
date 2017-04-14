@@ -49,5 +49,36 @@ public class MyTreeTest {
 
         assertThat(tree.findElement("222").toString(), is("MyLeaf{222}"));
     }
+    /**
+     * Test.
+     */
+    @Test
+    public void whenAddSevenElementAndCheckTreeIsBalanceThenTreeIsBalance() {
+        MyTree tree = new MyTree();
+        tree.addChild( "111");
+        tree.addChild( "222");
+        tree.addChild( "333");
+        tree.addChild( "444");
+        tree.addChild( "555");
+        tree.addChild( "666");
+        tree.addChild( "777");
+
+
+        assertThat(tree.treeIsBalance(), is(true));
+    }
+
+    /**
+     * Test.
+     */
+    @Test
+    public void whenAddFourElementAndCheckTreeIsBalanceThenTreeIsNotBalance() {
+        MyTree tree = new MyTree();
+        tree.addChild( "111");
+        tree.addChild( "222");
+        tree.addChild( "333");
+        tree.addChild( "444");
+
+        assertThat(tree.treeIsBalance(), is(false));
+    }
 
 }

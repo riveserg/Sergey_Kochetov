@@ -102,8 +102,38 @@ public class MyTree<E> {
          return result;
     }
 
+    /**
+     * tree is balance?
+     * @return true or false
+     */
+    public boolean treeIsBalance() {
+        return this.treeIsBalance(this.root);
+    }
 
-   class MyLeaf<E> {
+    /**
+     * Recursive method for tree is balance.
+     * @param leaf - leaf
+     * @return result
+     */
+    private boolean treeIsBalance(MyLeaf<E> leaf) {
+        boolean result = true;
+            if (leaf != null) {
+
+                if ((leaf.left != null && leaf.right == null) ||
+                        (leaf.right != null && leaf.left == null)) {
+                    System.out.println(leaf.parent.value + " = " );
+                    return false;
+                }
+                result = (treeIsBalance(leaf.left) & treeIsBalance(leaf.right));
+            }
+        return result;
+    }
+
+    /**
+     * MyLeaf.
+     * @param <E> generic
+     */
+   private class MyLeaf<E> {
         /**
          * Parent.
          */
