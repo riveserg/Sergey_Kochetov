@@ -133,7 +133,7 @@ public class MyTree<E> {
      * MyLeaf.
      * @param <E> generic
      */
-   private class MyLeaf<E> {
+   class MyLeaf<E> {
         /**
          * Parent.
          */
