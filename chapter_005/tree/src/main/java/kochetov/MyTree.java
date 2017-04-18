@@ -93,14 +93,34 @@ public class MyTree<E> {
      */
     public MyLeaf<E> findElement(E value) {
         MyLeaf<E> result = null;
-         for (MyLeaf<E> element : this.elements) {
-             if (element.value.equals(value)) {
-                 result = element;
-                 break;
-             }
-         }
-         return result;
+        if (value != null && this.root != null) {
+           result = this.findElement(this.root, value);
+        }
+        return result;
     }
+
+    /**
+     * Recursive method for find element by MyTree.
+     * @param parent - parent
+     * @param value - value
+     * @return
+     */
+    private MyLeaf<E> findElement(MyLeaf parent, E value) {
+        MyLeaf<E> result = null;
+        if (parent.value.equals(value)) {
+            result = parent;
+        } else {
+            if (parent.left != null) {
+                result = this.findElement(parent.left, value);
+            }
+            if (parent.right != null && parent.left == null) {
+                result = this.findElement(parent.right, value);
+            }
+        }
+        return result;
+
+    }
+
 
     /**
      * tree is balance?
@@ -121,7 +141,6 @@ public class MyTree<E> {
 
                 if ((leaf.left != null && leaf.right == null) ||
                         (leaf.right != null && leaf.left == null)) {
-                    System.out.println(leaf.parent.value + " = " );
                     return false;
                 }
                 result = (treeIsBalance(leaf.left) & treeIsBalance(leaf.right));
