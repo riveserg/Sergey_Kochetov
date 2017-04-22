@@ -25,9 +25,10 @@ public class ThreadCountWord implements Runnable {
         int countWord = 0;
         for (String str : this.data.split(" ")){
             countWord++;
-            System.out.println("countWord= " + countWord + " " + str);
         }
+        System.out.println(String.format("Words: %s", countWord));
 
     }
+
 
 }

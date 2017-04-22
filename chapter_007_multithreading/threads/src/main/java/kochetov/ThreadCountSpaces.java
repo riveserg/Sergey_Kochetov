@@ -27,8 +27,8 @@ public class ThreadCountSpaces implements Runnable {
         for (char ch : this.data.toCharArray()) {
             if (ch == '\u0020') {
                 countSpaces++;
-                System.out.println("countSpaces= " + countSpaces);
             }
         }
+        System.out.println(String.format("Spaces: %s", countSpaces));
     }
 }
