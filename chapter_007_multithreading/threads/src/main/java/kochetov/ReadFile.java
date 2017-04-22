@@ -19,7 +19,7 @@ public class ReadFile {
     }
 
     /**
-     * Main method
+     * Main method.
      */
     public void main(){
 
@@ -36,7 +36,7 @@ public class ReadFile {
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+
         }
 
 
