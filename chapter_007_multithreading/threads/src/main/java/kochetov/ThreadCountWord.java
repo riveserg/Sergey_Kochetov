@@ -1,0 +1,23 @@
+package kochetov;
+
+/**
+ * Created by Сергей on 22.04.2017.
+ */
+public class ThreadCountWord implements Runnable {
+    private final String data;
+
+    public ThreadCountWord(final String data) {
+        this.data = data;
+    }
+
+    @Override
+    public void run() {
+        int countWord = 0;
+        for (String str : this.data.split(" ")){
+            countWord++;
+            System.out.println("countWord= " + countWord + " " + str);
+        }
+
+    }
+
+}
