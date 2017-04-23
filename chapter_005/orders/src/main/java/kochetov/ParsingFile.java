@@ -9,7 +9,7 @@ import java.io.*;
  * Created by Сергей on 18.04.2017.
  */
 public class ParsingFile {
-  /*  private File file;
+    private File file;
     private OrderBook orderBook = new OrderBook();
 
     public ParsingFile() {
@@ -24,23 +24,22 @@ public class ParsingFile {
     public void loadFileAndAddToOrders(File file) {
 
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))){
-            while (reader.ready()) {
-                this.parse(reader.readLine().split(" "));
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
 
-                if (str.length == 7) {
+               // length = stream.available();
+            String line = "";
 
-                } else {
-                    id = str[2].replace("orderId=", "").replace("\"", "");
 
-                    this.orderBook.removeFromOrders(id);
-                }
-            } ;
+           // byte[] data = new byte[length];
+            //stream.read(data);
+           // String[] line = new String(data).split("\n");
+
+            //System.out.println(line.length);
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
     public void parse(final String[] line) {
         String book;
         Operation operation;
@@ -61,5 +60,9 @@ public class ParsingFile {
             this.orderBook.addToOrders(id, new Order(book, operation, price, volume));
         }
     }
-*/
+
+    public static void main(String[] args) {
+        ParsingFile pf = new ParsingFile();
+    }
+
 }
