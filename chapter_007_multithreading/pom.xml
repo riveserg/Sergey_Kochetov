@@ -15,6 +15,7 @@
     <modules>
         <module>threads</module>
         <module>jmm</module>
+        <module>monitore</module>
 
     </modules>
 
